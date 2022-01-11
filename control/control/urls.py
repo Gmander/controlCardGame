@@ -22,6 +22,8 @@ app_name = 'controlApp'
 urlpatterns = [
     path('', views.Index.as_view(), name='index'),
     path('example/', views.example.as_view(), name='example'),
+    path('output/', views.output.as_view(), name='output'),
     path('drawingtest/', views.drawingtest.as_view(), name='drawingtest'),
     path('admin/', admin.site.urls),
 ]
+

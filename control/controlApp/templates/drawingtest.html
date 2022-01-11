@@ -47,7 +47,7 @@
                 </form>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
+              <a class="nav-link" href="/output">output</a>
             </li>
           </ul>
         </div>
@@ -98,6 +98,7 @@
 <!-- Hand -->
 <button onclick="addCardToHand()">Draw into existing</button>
 <button onclick="createCardInHand()">Draw Create new card</button>
+<button onclick="drawCard()">Draw to hand, remove from Deck</button>
 
 <!-- This version of Draw takes an existing list of ul, div, and spans, then adds the classes and text after. 
 only usefull with something else dictating what classes, and with a loop iterating through the set if ul, div, and spans -->
@@ -114,9 +115,9 @@ only usefull with something else dictating what classes, and with a loop iterati
 <div class="playingCards faceImages">
     <ul class="hand">
         <li>
-            <div class="card rank-k nova">
+            <a onclick="testt()" id="hand"><div class="card rank-k nova">
 
-            </div>
+            </div></a>
         </li>
     </ul>
 </div>
@@ -169,5 +170,7 @@ only usefull with something else dictating what classes, and with a loop iterati
 
 
 <!-- JS links -->
+<script type="text/javascript" src = "{% static 'js/CardClasses.js' %}"></script>
+<script type="text/javascript" src = "{% static 'js/functions.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
 </html>

@@ -16,3 +16,7 @@ class example(View):
 class drawingtest(View):
     def get(self, request):
         return render(request, 'drawingtest.html')
+
+class output(View):
+    def get(self, request):
+        return render(request, 'output.html')
