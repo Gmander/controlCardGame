@@ -1,6 +1,6 @@
-// var CardArray = ["singularity","rift","timestop","futureShift","exoticMatter", "forceField", "deflector", "reactor","wormhole", "nova","darkEnergy", "antimatter" ]
+// var CardArray = ["singularity","rift","timeStop","futureShift","exoticMatter", "forceField", "deflector", "reactor","wormhole", "nova","darkEnergy", "antimatter" ]
 
-var CardArray = [singularity, rift,timestop,futureShift,exoticMatter, forceField, deflector, reactor,wormhole, nova,darkEnergy, antimatter]
+var CardArray = [singularity, rift,timeStop,futureShift,exoticMatter, forceField, deflector, reactor,wormhole, nova,darkEnergy, antimatter]
 
 var ObjectArray = []
 var PlayedArray = []

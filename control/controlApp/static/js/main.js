@@ -1,5 +1,5 @@
 //This is the creation of the deck.
-var CardArray = [singularity, rift,timestop,futureShift,exoticMatter, forceField, deflector, reactor,wormhole, nova,darkEnergy, antimatter]
+var CardArray = [singularity, rift,timeStop,futureShift,exoticMatter, forceField, deflector, reactor,wormhole, nova,darkEnergy, antimatter]
 
 var ObjectArray = []
 var PlayedArray = []
@@ -18,7 +18,7 @@ for(let x =0 ; x<Alength; x++){
     
 }
 
-
+x=1
 
 // This version of Draw takes an existing list of ul, div, and spans, then adds the classes and text after. 
 // only usefull with something else dictating what classes, and with a loop iterating through the set if ul, div, and spans
@@ -109,6 +109,14 @@ function drawCard(x) {
         console.log(drawnCard.name)   
         return drawnCard.name
 }
+        // the x indicates that this card is going into player one's hand.
+        //This variable should be redefined in main scope of main.js. It defaulted to one here for testing purposes.
+function drawFromDeck() {
+    drawCard(x);
+    removeCardFromDeck()
+
+}
+
 // console.log(drawnCard)
 
 // function drawCard(x){

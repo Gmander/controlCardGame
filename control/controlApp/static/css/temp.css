@@ -1,0 +1,45 @@
+
+/* suit colours
+********************************************************************/
+
+.playingCards .card.timeStop {
+    color: #f00 !important;
+}
+.playingCards.fourColours .card.timeStop {
+    color: #00f !important;
+}
+[lang=de] .playingCards.fourColours .card.timeStop {
+    color: #f60 !important;
+}
+/*____________ symbols in the middle (suits, full) ____________*/
+
+/* diamonds */
+.playingCards .card.rank-2.timeStop .suit:after {
+    content: "\2666 \A\A\2666";
+}
+.playingCards .card.rank-3.timeStop .suit:after {
+    content: "\2666 \A\2666 \A\2666";
+}
+.playingCards .card.rank-4.timeStop .suit:after {
+    content: "\2666\00A0\00A0\00A0\2666 \A\A\2666\00A0\00A0\00A0\2666";
+}
+.playingCards .card.rank-5.timeStop .suit:after {
+    content: "\2666\00A0\00A0\00A0\2666 \A\2666 \A\2666\00A0\00A0\00A0\2666";
+}
+.playingCards .card.rank-6.timeStop .suit:after {
+    content: "\2666\00A0\00A0\00A0\2666 \A\2666\00A0\00A0\00A0\2666 \A\2666\00A0\00A0\00A0\2666";
+}
+.playingCards .card.rank-7.timeStop .suit:after {
+    content: "\2666\00A0\00A0\2666 \A\2666\00A0\2666\00A0\2666 \A\2666\00A0\00A0\2666";
+}
+.playingCards .card.rank-8.timeStop .suit:after {
+    content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\00A0\2666 \A\2666\00A0\2666\00A0\2666";
+}
+.playingCards .card.rank-9.timeStop .suit:after {
+    content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666";
+}
+.playingCards .card.rank-10.timeStop .suit:after {
+    content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666";
+}
+
+.playingCards.faceImages .card.rank-k.timeStop  { background-image: url("../img/cards/timeStop.png"); background-size: contain;}

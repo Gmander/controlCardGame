@@ -20,9 +20,9 @@ class rift{
     }
 }
 
-class timestop{
+class timeStop{
     constructor(){
-        this.name = "timestop"
+        this.name = "timeStop"
         this.type = 1;
         this.points = 9;
         this.owner = null;    
