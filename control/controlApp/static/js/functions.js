@@ -41,3 +41,15 @@ function classSelect(string){
   console.log("ooopsie woopsie");
 
 }
+
+function s2o(cardString){
+  let classActual = ObjectDict[cardString]
+  return new classActual()
+
+
+
+
+
+
+
+}

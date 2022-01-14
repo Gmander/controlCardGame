@@ -5,8 +5,8 @@ class singularity{
         this.points = 8;
         this.owner = null;
     }
-    dosomething(){
-        console.log("something has been done")
+    doSomething(){
+        console.log("method has been called")
     }
 
 }

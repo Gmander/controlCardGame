@@ -1,6 +1,6 @@
 //This is the creation of the deck.
 var CardArray = [singularity, rift,timeStop,futureShift,exoticMatter, forceField, deflector, reactor,wormhole, nova,darkEnergy, antimatter]
-
+var ObjectDict = {"singularity":singularity,"rift":rift,"timeStop":timeStop,"futureShift":futureShift, "exoticMatter":exoticMatter, "forceField":forceField, "deflector":deflector, "reactor":reactor, "wormhole":wormhole, "nova":nova,"darkEnergy":darkEnergy,"antimatter":antimatter}
 var ObjectArray = []
 var PlayedArray = []
 
@@ -20,6 +20,8 @@ for(let x =0 ; x<Alength; x++){
 
 x=1
 var cardCounter = 0
+var turnCount = 0
+var maxTurnCount = parseInt(prompt("how many players are there?"))
 console.log("cardCounter = " + cardCounter)
 
 // This version of Draw takes an existing list of ul, div, and spans, then adds the classes and text after. 
@@ -118,10 +120,10 @@ function drawCard(x) {
 }
 
 // function for converting output of topCardOfDeck() into frontend reaction into your hand
-function cardtoHand(x) {
+function cardtoHand() {
     //Determining the card to pull from deck.
     let drawnCard = ObjectArray.pop()
-    drawnCard.owner = x;
+    drawnCard.owner = turnCount//x needs to be replaced with turn variable//done;
     PlayedArray.push(drawnCard)
     removeCardFromDeck()
     // creating id and li and adding class
@@ -193,7 +195,9 @@ function createFocusedCard(clicked_id) {
     
     newUl.classList.add(thisIsThisCard);
     newUl.setAttribute("onclick","removeFocusedCard()");
-    console.log(thisIsThisCard)   
+    console.log(thisIsThisCard)
+    s2o(thisIsThisCard).doSomething()//this code runs the method associated with the object //4test only singularity has a method
+    //TODO add a function which puts a card of the class played in play and delete from players hand i.e setting owner prop to null
     return thisIsThisCard
 }
 
@@ -246,4 +250,14 @@ function testt() {
     // console.log(bark)
     // bark()
     mark()
+}
+
+function nextTurn(){
+   if(turnCount === (maxTurnCount-1)) {
+       turnCount = 0;
+   }
+   else{
+       turnCount += 1
+   }
+
 }
