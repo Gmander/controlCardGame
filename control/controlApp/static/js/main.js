@@ -19,6 +19,8 @@ for(let x =0 ; x<Alength; x++){
 }
 
 x=1
+var cardCounter = 0
+console.log("cardCounter = " + cardCounter)
 
 // This version of Draw takes an existing list of ul, div, and spans, then adds the classes and text after. 
 // only usefull with something else dictating what classes, and with a loop iterating through the set if ul, div, and spans
@@ -78,6 +80,7 @@ function removeCardFromDeck() {
     let liCardsInDeck = document.getElementsByTagName("ul")[1].getElementsByTagName('li');
     let numCardsInDeck = document.getElementsByTagName("ul")[1].length;
     // console.log(liCardsInDeck)
+    cardsRemaining = (liCardsInDeck.length)
     console.log(liCardsInDeck.length)
     if (liCardsInDeck.length < 1)
     console.log("the end")
@@ -88,18 +91,21 @@ function removeCardFromDeck() {
     // theDeck.removeChild(testt)
 }
 
+
+
+
 // function for converting output of topCardOfDeck() into frontend reaction
 function drawCard(x) {
         //Determining the card to pull from deck.
         let drawnCard = ObjectArray.pop()
         drawnCard.owner = x;
         PlayedArray.push(drawnCard)
-        
+        removeCardFromDeck()
         // creating id and li and adding class
         let newCardDiv = document.getElementById("createNewCardHere")
         let newUl = document.createElement("ul")
         //sets id of UL to newCardInHand, to be called for later use.
-        newUl.setAttribute("id", "newCardInHand")
+        newUl.setAttribute("id", ("newCardInHand" + cardsRemaining))
         newCardDiv.appendChild(newUl)
         newUl.classList.add("card");
         newUl.classList.add("rank-k");
@@ -107,14 +113,105 @@ function drawCard(x) {
         newUl.classList.add(drawnCard.name);
         
         console.log(drawnCard.name)   
+        
         return drawnCard.name
+}
+
+// function for converting output of topCardOfDeck() into frontend reaction into your hand
+function cardtoHand(x) {
+    //Determining the card to pull from deck.
+    let drawnCard = ObjectArray.pop()
+    drawnCard.owner = x;
+    PlayedArray.push(drawnCard)
+    removeCardFromDeck()
+    // creating id and li and adding class
+    let newCardDiv = document.getElementById("createNewHandHere")
+    let newUl = document.createElement("li")
+    //sets id of UL to newCardInHand, to be called for later use.
+    newUl.setAttribute("id", "newCardInHand" + cardsRemaining)
+    newCardDiv.appendChild(newUl)
+    newUl.classList.add("card");
+    newUl.classList.add("rank-k");
+    
+    newUl.classList.add(drawnCard.name);
+    newUl.setAttribute("onclick","createFocusedCard(this.id)");
+    console.log(drawnCard.name)   
+    return drawnCard.name
 }
         // the x indicates that this card is going into player one's hand.
         //This variable should be redefined in main scope of main.js. It defaulted to one here for testing purposes.
 function drawFromDeck() {
     drawCard(x);
-    removeCardFromDeck()
+    
 
+}
+
+function addPadding() {
+    let disId = document.getElementById("usee")
+    disId.classList.add("tempPadding")
+}
+
+function toggleHandDisplay() {
+    let thisId = document.getElementById("currentSpotForHand")
+    thisId.classList.remove("rotateHand")
+    thisId.classList.add("faceImages")
+    let thisNewId = document.getElementById("toggleMeDaddy")
+    thisNewId.setAttribute("onclick", "toggleHandDisplayBack()")
+
+}
+
+function toggleHandDisplayBack() {
+    let thisId = document.getElementById("currentSpotForHand")
+    thisId.classList.remove("faceImages")
+    thisId.classList.add("rotateHand")
+    let thisNewId = document.getElementById("toggleMeDaddy")
+    thisNewId.setAttribute("onclick", "toggleHandDisplay()")
+
+
+}
+
+// function drawCardtoHand() {
+//     cardtoHand(1);
+    
+// }
+//basically just makes a big card in your face
+function createFocusedCard(clicked_id) {
+    //what is the card we are pulling?
+    let thisId = document.getElementById(clicked_id)
+    let cardClassess = thisId.className
+    let cardClassezz = cardClassess.split(" ")
+    console.log(cardClassezz[2])
+    let thisIsThisCard = cardClassezz[2]
+    // creating id and li and adding class
+    let newCardDiv = document.getElementById("createFocusedCardHere")
+    let newUl = document.createElement("li")
+    //sets id of UL to newCardInHand, to be called for later use.
+    newUl.setAttribute("id", "focusedCard")
+    newCardDiv.appendChild(newUl)
+    newUl.classList.add("bigCard");
+    newUl.classList.add("rank-k");
+    
+    newUl.classList.add(thisIsThisCard);
+    newUl.setAttribute("onclick","removeFocusedCard()");
+    console.log(thisIsThisCard)   
+    return thisIsThisCard
+}
+
+
+// function focusCard(clicked_id) {
+//     //what is the card we are pulling?
+//     let thisId = document.getElementById(clicked_id)
+//     let cardClassess = thisId.className
+//     let cardClassezz = cardClassess.split(" ")
+//     console.log(cardClassezz[2])
+
+//     console.log(clicked_id)
+
+// }
+
+function removeFocusedCard() {
+    let removeThis = document.getElementById("focusedCard")
+    removeThis.remove()
 }
 
 // console.log(drawnCard)

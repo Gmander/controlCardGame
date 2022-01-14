@@ -20,3 +20,7 @@ class drawingtest(View):
 class output(View):
     def get(self, request):
         return render(request, 'output.html')
+
+class theBoard(View):
+    def get(self, request):
+        return render(request, 'theBoard.html')

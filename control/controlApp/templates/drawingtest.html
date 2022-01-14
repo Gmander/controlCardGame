@@ -24,7 +24,14 @@
 
         <title>Control Drawing Test</title>
     </head>
-    
+    <style>
+        body {
+            background-image: url("../static/img/thePaperBackground.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+        }
+    </style>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -49,6 +56,9 @@
             <li class="nav-item">
               <a class="nav-link" href="/output">output</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/theBoard">Board Playtest</a>
+              </li>
           </ul>
         </div>
       </nav>
@@ -93,12 +103,18 @@
 <!-- End Deck -->
 <!-- Hand -->
 
-<button onclick="createCardInHand()">Draw Create new card</button>
-<button onclick="drawCard()">Draw to hand, remove from Deck</button>
-
 
 
 <button onclick="drawFromDeck()">Draw from Deck</button>
+<button onclick="cardtoHand()">Draw from Deck into hand</button>
+<button onclick="createFocusedCard()">createFocuedCardHere</button>
+
+<br><br><br>
+<div class="playingCards faceImages">
+    <ul class="hand" id="createNewHandHere">
+        <li class="card rank-k cardSpace"></li>
+    </ul>
+</div>
 
 <!-- This version of Draw takes an existing list of ul, div, and spans, then adds the classes and text after. 
 only usefull with something else dictating what classes, and with a loop iterating through the set if ul, div, and spans -->
@@ -106,15 +122,44 @@ only usefull with something else dictating what classes, and with a loop iterati
 <div class="playingCards faceImages">
     <ul class="hand">
         <li>
-            <a onclick="testt()" id="hand"><div class="card rank-k nova">
+            <a onclick="testt()" id="hand">
+                <div class="card rank-k nova" onmouseover="addPadding()" id="usee">
 
             </div></a>
+
         </li>
+        <li id="newCardInHand11" class="card rank-k exoticMatter" onmouseover="addPadding()"></li>
+        <li id="newCardInHand11" class="card rank-k exoticMatter" onmouseover="addPadding()"></li>
+
     </ul>
 </div>
 
 <div class="playingCards faceImages" id="createNewCardHere">
 
+</div>
+<div class="bigPlayingCards faceImages" id="createFocusedCardHere">
+
+</div>
+<div class="playingCards rotateHand">
+    <ul class="hand" id="createNewHandHere">
+
+    </ul>
+</div>
+<div class="playingCards rotateHand">
+    <ul class="hand" id="createNewHandHere">
+        <li id="newCardInHand12" onclick="focus()" class="card rank-k timeStop"></li>
+        <li id="newCardInHand11" class="card rank-k exoticMatter"></li>
+        <li id="newCardInHand10" class="card rank-k rift"></li>
+        <li id="newCardInHand9" class="card rank-k reactor"></li>
+        <li id="newCardInHand8" class="card rank-k wormhole"></li>
+        <li id="newCardInHand7" class="card rank-k nova"></li>
+        <li id="newCardInHand6" class="card rank-k singularity"></li>
+        <li id="newCardInHand5" class="card rank-k futureShift"></li>
+        <li id="newCardInHand4" class="card rank-k forceField"></li>
+        <li id="newCardInHand3" class="card rank-k antimatter"></li>
+        <li id="newCardInHand2" class="card rank-k deflector"></li>
+        <li id="newCardInHand1" onclick="createFocusedCard(this.id)" class="card rank-k darkEnergy"></li>
+    </ul>
 </div>
         <!-- <li>
             <div class="card rank-k nova">

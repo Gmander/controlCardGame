@@ -24,6 +24,7 @@ urlpatterns = [
     path('example/', views.example.as_view(), name='example'),
     path('output/', views.output.as_view(), name='output'),
     path('drawingtest/', views.drawingtest.as_view(), name='drawingtest'),
+    path('theBoard/', views.theBoard.as_view(), name='theBoard'),
     path('admin/', admin.site.urls),
 ]
 

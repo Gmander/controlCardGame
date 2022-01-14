@@ -45,14 +45,31 @@
     cursor: pointer;
 }
 
+/* .playingCards .card.back {
+    text-indent: -4000px;
+    background-color: #ccc;
+    background-repeat: repeat;
+    background-image: url(data:image/gif;base64,R0lGODlhJAAkAJEAAOjFsezdztOKbL5QKCH5BAAAAAAALAAAAAAkACQAAAL/HC4RAqm/mmLHyHmAbczB11Ea8ombJKSgKo6Z17pXFznmS1JptiX0z3vVhpEKDoUIkoa0olGIUeZUk1RI6Yn2mh/FDAt6frOrRRTqXPpsVLYugzxaVy+YcBdnoWPZOT0E4eckQtZFZBjWoHixQFWl6Nhol6R2p1Okt5TGaEWZA6fjiMdhZgPHeWrTWGVq+jTZg1HYyAEWKLYzmyiGKoUimilz+YYryyTlg5RcDJSAbNx0Q7lMcbIGEyzTK8zVdfVaImzs/QV+prYqWWW2ObkoOApM/Em/rUlIm7fijs8a2EEKEaZ3AsMUgneEU6RcpJbZ27aGHkAO2Ors8xQH1IR0Bn5YnOtVAAA7); image is "Pattern 069" from http://www.squidfingers.com/patterns/ */
+    /* background-image: -moz-repeating-linear-gradient(34% 6% 135deg,#0F1E59, #75A1BF, #3E3E63 50%);
+    background-image: -webkit-gradient(radial, center center, 20, center center, 80, from(#3c3), color-stop(0.4, #363), to(#030));
+    yes, it's intentional that Mozilla, Webkit, Opera and IE all will get different backgrounds ... why not? :) */
+/* } */
+
+/* cool paper background for backs of cards
 .playingCards .card.back {
     text-indent: -4000px;
     background-color: #ccc;
     background-repeat: repeat;
-    background-image: url(data:image/gif;base64,R0lGODlhJAAkAJEAAOjFsezdztOKbL5QKCH5BAAAAAAALAAAAAAkACQAAAL/HC4RAqm/mmLHyHmAbczB11Ea8ombJKSgKo6Z17pXFznmS1JptiX0z3vVhpEKDoUIkoa0olGIUeZUk1RI6Yn2mh/FDAt6frOrRRTqXPpsVLYugzxaVy+YcBdnoWPZOT0E4eckQtZFZBjWoHixQFWl6Nhol6R2p1Okt5TGaEWZA6fjiMdhZgPHeWrTWGVq+jTZg1HYyAEWKLYzmyiGKoUimilz+YYryyTlg5RcDJSAbNx0Q7lMcbIGEyzTK8zVdfVaImzs/QV+prYqWWW2ObkoOApM/Em/rUlIm7fijs8a2EEKEaZ3AsMUgneEU6RcpJbZ27aGHkAO2Ors8xQH1IR0Bn5YnOtVAAA7); /* image is "Pattern 069" from http://www.squidfingers.com/patterns/ */
-    background-image: -moz-repeating-linear-gradient(34% 6% 135deg,#0F1E59, #75A1BF, #3E3E63 50%);
-    background-image: -webkit-gradient(radial, center center, 20, center center, 80, from(#3c3), color-stop(0.4, #363), to(#030));
-    /* yes, it's intentional that Mozilla, Webkit, Opera and IE all will get different backgrounds ... why not? :) */
+    background-image: url("../img/thePaperBackground.jpg");
+} */
+
+/* Other background for backs of cards */
+.playingCards .card.back {
+    text-indent: -4000px;
+    background-color: #ccc;
+    background-repeat: repeat;
+    background-image: url("../img/cardBackground.jpg");
+    background-size: contain;
 }
 
 /* suit colours
@@ -639,24 +656,145 @@
     content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666";
 }
 
+/* suit colours
+********************************************************************/
+
+.playingCards .card.wormhole {
+    color: #f00 !important;
+}
+.playingCards.fourColours .card.wormhole {
+    color: #00f !important;
+}
+[lang=de] .playingCards.fourColours .card.wormhole {
+    color: #f60 !important;
+}
+/*____________ symbols in the middle (suits, full) ____________*/
+
+/* diamonds */
+.playingCards .card.rank-2.wormhole .suit:after {
+    content: "\2666 \A\A\2666";
+}
+.playingCards .card.rank-3.wormhole .suit:after {
+    content: "\2666 \A\2666 \A\2666";
+}
+.playingCards .card.rank-4.wormhole .suit:after {
+    content: "\2666\00A0\00A0\00A0\2666 \A\A\2666\00A0\00A0\00A0\2666";
+}
+.playingCards .card.rank-5.wormhole .suit:after {
+    content: "\2666\00A0\00A0\00A0\2666 \A\2666 \A\2666\00A0\00A0\00A0\2666";
+}
+.playingCards .card.rank-6.wormhole .suit:after {
+    content: "\2666\00A0\00A0\00A0\2666 \A\2666\00A0\00A0\00A0\2666 \A\2666\00A0\00A0\00A0\2666";
+}
+.playingCards .card.rank-7.wormhole .suit:after {
+    content: "\2666\00A0\00A0\2666 \A\2666\00A0\2666\00A0\2666 \A\2666\00A0\00A0\2666";
+}
+.playingCards .card.rank-8.wormhole .suit:after {
+    content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\00A0\2666 \A\2666\00A0\2666\00A0\2666";
+}
+.playingCards .card.rank-9.wormhole .suit:after {
+    content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666";
+}
+.playingCards .card.rank-10.wormhole .suit:after {
+    content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666";
+}
+
+
+/* suit colours
+********************************************************************/
+
+.playingCards .card.cardSpace {
+    color: #f00 !important;
+}
+.playingCards.fourColours .card.cardSpace {
+    color: #00f !important;
+}
+[lang=de] .playingCards.fourColours .card.cardSpace {
+    color: #f60 !important;
+}
+/*____________ symbols in the middle (suits, full) ____________*/
+
+/* diamonds */
+.playingCards .card.rank-2.cardSpace .suit:after {
+    content: "\2666 \A\A\2666";
+}
+.playingCards .card.rank-3.cardSpace .suit:after {
+    content: "\2666 \A\2666 \A\2666";
+}
+.playingCards .card.rank-4.cardSpace .suit:after {
+    content: "\2666\00A0\00A0\00A0\2666 \A\A\2666\00A0\00A0\00A0\2666";
+}
+.playingCards .card.rank-5.cardSpace .suit:after {
+    content: "\2666\00A0\00A0\00A0\2666 \A\2666 \A\2666\00A0\00A0\00A0\2666";
+}
+.playingCards .card.rank-6.cardSpace .suit:after {
+    content: "\2666\00A0\00A0\00A0\2666 \A\2666\00A0\00A0\00A0\2666 \A\2666\00A0\00A0\00A0\2666";
+}
+.playingCards .card.rank-7.cardSpace .suit:after {
+    content: "\2666\00A0\00A0\2666 \A\2666\00A0\2666\00A0\2666 \A\2666\00A0\00A0\2666";
+}
+.playingCards .card.rank-8.cardSpace .suit:after {
+    content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\00A0\2666 \A\2666\00A0\2666\00A0\2666";
+}
+.playingCards .card.rank-9.cardSpace .suit:after {
+    content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666";
+}
+.playingCards .card.rank-10.cardSpace .suit:after {
+    content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666";
+}
+
+
+
+
+.playingCards.faceImages .card.rank-k.wormhole  { background-image: url("../img/cards/wormhole.png"); background-size: contain;}
+.playingCards.rotateHand .card.rank-k.wormhole  { background-image: url("../img/cards/wormhole.png"); background-size: contain;}
+.bigPlayingCards.faceImages .bigCard.rank-k.wormhole { background-image: url("../img/cards/wormhole.png"); background-size: contain; margin-top: -100% !important; z-index: 1000;}
+
 .playingCards.faceImages .card.rank-k.timeStop  { background-image: url("../img/cards/timeStop.png"); background-size: contain;}
+.playingCards.rotateHand .card.rank-k.timeStop  { background-image: url("../img/cards/timeStop.png"); background-size: contain;}
+.bigPlayingCards.faceImages .bigCard.rank-k.timeStop { background-image: url("../img/cards/timeStop.png"); background-size: contain; margin-top: -100% !important; z-index: 1000;}
 
 .playingCards.faceImages .card.rank-k.singularity  { background-image: url("../img/cards/singularity.png"); background-size: contain;}
+.playingCards.rotateHand .card.rank-k.singularity  { background-image: url("../img/cards/singularity.png"); background-size: contain;}
+.bigPlayingCards.faceImages .bigCard.rank-k.singularity { background-image: url("../img/cards/singularity.png"); background-size: contain; margin-top: -100% !important; z-index: 1000;}
 
 .playingCards.faceImages .card.rank-k.rift  { background-image: url("../img/cards/rift.png"); background-size: contain;}
+.playingCards.rotateHand .card.rank-k.rift  { background-image: url("../img/cards/rift.png"); background-size: contain;}
+.bigPlayingCards.faceImages .bigCard.rank-k.rift { background-image: url("../img/cards/rift.png"); background-size: contain; margin-top: -100% !important; z-index: 1000;}
 
 .playingCards.faceImages .card.rank-k.reactor  { background-image: url("../img/cards/reactor.png"); background-size: contain;}
+.playingCards.rotateHand .card.rank-k.reactor  { background-image: url("../img/cards/reactor.png"); background-size: contain;}
+.bigPlayingCards.faceImages .bigCard.rank-k.reactor { background-image: url("../img/cards/reactor.png"); background-size: contain; margin-top: -100% !important; z-index: 1000;}
 
 .playingCards.faceImages .card.rank-k.futureShift  { background-image: url("../img/cards/futureShift.png"); background-size: contain;}
+.playingCards.rotateHand .card.rank-k.futureShift  { background-image: url("../img/cards/futureShift.png"); background-size: contain;}
+.bigPlayingCards.faceImages .bigCard.rank-k.futureShift { background-image: url("../img/cards/futureShift.png"); background-size: contain; margin-top: -100% !important; z-index: 1000;}
 
 .playingCards.faceImages .card.rank-k.forceField  { background-image: url("../img/cards/forceField.png"); background-size: contain;}
+.playingCards.rotateHand .card.rank-k.forceField  { background-image: url("../img/cards/forceField.png"); background-size: contain;}
+.bigPlayingCards.faceImages .bigCard.rank-k.forceField { background-image: url("../img/cards/forceField.png"); background-size: contain; margin-top: -100% !important; z-index: 1000;}
 
 .playingCards.faceImages .card.rank-k.exoticMatter  { background-image: url("../img/cards/exoticMatter.png"); background-size: contain;}
+.playingCards.rotateHand .card.rank-k.exoticMatter  { background-image: url("../img/cards/exoticMatter.png"); background-size: contain;}
+.bigPlayingCards.faceImages .bigCard.rank-k.exoticMatter { background-image: url("../img/cards/exoticMatter.png"); background-size: contain; margin-top: -100% !important; z-index: 1000;}
 
 .playingCards.faceImages .card.rank-k.deflector  { background-image: url("../img/cards/deflector.png"); background-size: contain;}
-.playingCards.faceImages .card.rank-k.nova { background-image: url("../img/cards/nova.png"); background-size: 5.3em;}
+.playingCards.rotateHand .card.rank-k.deflector  { background-image: url("../img/cards/deflector.png"); background-size: contain;}
+.bigPlayingCards.faceImages .bigCard.rank-k.deflector { background-image: url("../img/cards/deflector.png"); background-size: contain; margin-top: -100% !important; z-index: 1000;}
+
+.playingCards.faceImages .card.rank-k.nova { background-image: url("../img/cards/nova.png"); background-size: contain;}
+.playingCards.rotateHand .card.rank-k.nova  { background-image: url("../img/cards/nova.png"); background-size: contain;}
+.bigPlayingCards.faceImages .bigCard.rank-k.nova { background-image: url("../img/cards/nova.png"); background-size: contain; margin-top: -100% !important; z-index: 1000;}
+
 .playingCards.faceImages .card.rank-k.antimatter { background-image: url("../img/cards/antimatter.png"); background-size: contain;}
+.playingCards.rotateHand .card.rank-k.antimatter  { background-image: url("../img/cards/antimatter.png"); background-size: contain;}
+.bigPlayingCards.faceImages .bigCard.rank-k.antimatter { background-image: url("../img/cards/antimatter.png"); background-size: contain; margin-top: -100% !important; z-index: 1000;}
+
 .playingCards.faceImages .card.rank-k.darkEnergy  { background-image: url("../img/cards/darkEnergy.png"); background-size: contain;}
+.playingCards.rotateHand .card.rank-k.darkEnergy  { background-image: url("../img/cards/darkEnergy.png"); background-size: contain;}
+.bigPlayingCards.faceImages .bigCard.rank-k.darkEnergy { background-image: url("../img/cards/darkEnergy.png"); background-size: contain; margin-top: -100% !important; z-index: 1000;}
+
+
 
 .playingCards.faceImages .card.joker         { background-image: url(faces/joker.gif); }
 .playingCards.simpleCards .card.rank-j,
@@ -1268,7 +1406,7 @@
 .bigPlayingCards.faceImages .bigCard.rank-k,
 .bigPlayingCards.faceImages .bigCard.joker {
     background-repeat: no-repeat;
-    background-position: -1em 0;
+    background-position: 0;}
     /* @change: smaller cards: more negative distance from the left
        bigger cards: 0 or more positive distance from the left */
 
@@ -1280,7 +1418,7 @@
     -khtml-background-size: contain;
     background-size: contain;
     */
-}
+/* }
 
 .bigPlayingCards.faceImages .bigCard.rank-j.deflector  { background-image: url(faces/JD.gif); }
 .bigPlayingCards.faceImages .bigCard.rank-j.nova { background-image: url(faces/JH.gif); }
@@ -1300,7 +1438,7 @@
 .bigPlayingCards.faceImages .bigCard.joker         { background-image: url(faces/joker.gif); }
 .bigPlayingCards.simpleCards .bigCard.rank-j,
 .bigPlayingCards.simpleCards .bigCard.rank-q,
-.bigPlayingCards.simpleCards .bigCard.rank-k       { background-image: none !important; }
+.bigPlayingCards.simpleCards .bigCard.rank-k       { background-image: none !important; } */
 
 /*____________ symbols in the middle (faces as dingbat symbols) ____________*/
 

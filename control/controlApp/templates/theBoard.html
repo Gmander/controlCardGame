@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- ==============================================
+        Basic Page Needs
+        =============================================== -->
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- end -->
+        
+        <link rel="stylesheet" href="{% static 'css/cards-ie.css' %}">
+        <link rel="stylesheet" href="{% static 'css/cards-ie9.css' %}">
+        <link rel="stylesheet" href="{% static 'css/cards.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<!-- Boostrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+
+        <title>The Board</title>
+    </head>
+    <style>
+        body {
+            background-image: url("../static/img/thePaperBackground.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+        }
+    </style>
+<!-- Nav and buttons -->
+    <div class="row" style="padding-bottom: 10vh;">
+        <div class="col-1 col">
+            <button class="btn btn-transparent" ><a href="../drawingtest" style="color: rgb(194, 87, 26);">Back</a></button>
+        </div>
+        <div class="col-2 col">
+        </div>
+        <div class="col-2 col">
+        </div>
+        <div class="col-3 col">
+            <a onclick="start()" class="btn9" id="startButton">
+                <span>Start</span>
+            <div class="transition"></div>
+        </a>
+        </div>
+    </div>
+
+    <!-- the deck -->
+    <div class="row">
+        <div class="col col-3"></div>
+        <div class="col col-4 playingCards faceImages">
+                <ul class="deck" id="createDeckHere">
+                </ul>
+        </div>
+        <div class="col col-3"></div>
+    </div>
+
+
+<div class="row">
+    <div class="col col-3">
+        <button onclick="toggleHandDisplay()" id="toggleMeDaddy">Toggle Card View</button>
+    </div>
+    <div class="col col-4">
+        <div class="playingCards faceImages" id="createNewCardHere" style="min-height: 30vh ;">
+        </div>
+        <div class="bigPlayingCards faceImages" id="createFocusedCardHere">
+        </div>
+        <div class="playingCards rotateHand" id="currentSpotForHand">
+            <ul class="hand" id="createNewHandHere">
+        
+            </ul>
+        </div>
+    </div>
+    <div class="col col-3"></div>
+
+</div>
+    
+
+
+
+
+
+
+
+<!-- JS links -->
+<script type="text/javascript" src = "{% static 'js/CardClasses.js' %}"></script>
+<script type="text/javascript" src = "{% static 'js/functions.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/theGame.js' %}"></script>
+</html>
