@@ -21,7 +21,7 @@ for(let x =0 ; x<Alength; x++){
 x=1
 var cardCounter = 0
 var turnCount = 0
-var maxTurnCount = parseInt(prompt("how many players are there?"))
+// var maxTurnCount = parseInt(prompt("how many players are there?"))
 console.log("cardCounter = " + cardCounter)
 
 // This version of Draw takes an existing list of ul, div, and spans, then adds the classes and text after. 
@@ -140,13 +140,6 @@ function cardtoHand() {
     console.log(drawnCard.name)   
     return drawnCard.name
 }
-        // the x indicates that this card is going into player one's hand.
-        //This variable should be redefined in main scope of main.js. It defaulted to one here for testing purposes.
-function drawFromDeck() {
-    drawCard(x);
-    
-
-}
 
 function addPadding() {
     let disId = document.getElementById("usee")
@@ -190,35 +183,35 @@ function createFocusedCard(clicked_id) {
     let newUl = document.createElement("li")
 
     
-        //first button
-        let firstButLi = document.createElement("li")
-        testtest.appendChild(firstButLi)
-        firstButLi.setAttribute("id", "iGo2")
-        let newerDiv = document.createElement("div")
-        firstButLi.appendChild(newerDiv)
-        firstButLi.classList.add("slideRight")
-        newerDiv.classList.add("button_slide")
-        newerDiv.classList.add("slide_down")
+        // //first button
+        // let firstButLi = document.createElement("li")
+        // testtest.appendChild(firstButLi)
+        // firstButLi.setAttribute("id", "iGo2")
+        // let newerDiv = document.createElement("div")
+        // firstButLi.appendChild(newerDiv)
+        // firstButLi.classList.add("slideRight")
+        // newerDiv.classList.add("button_slide")
+        // newerDiv.classList.add("slide_down")
        
-        //text in first button
-        var text = document.createTextNode("Play Card")
-            newerDiv.appendChild(text)
+        // //text in first button
+        // var text = document.createTextNode("Play Card")
+        //     newerDiv.appendChild(text)
 
 
 
-        // second button
-        let secondButLi = document.createElement("li")
-        testtest.appendChild(secondButLi)
-        secondButLi.setAttribute("id", "iGo1")
-        let newestDiv = document.createElement("div")
-        secondButLi.appendChild(newestDiv)
-        secondButLi.classList.add("slideRightLess")
+        // // second button
+        // let secondButLi = document.createElement("li")
+        // testtest.appendChild(secondButLi)
+        // secondButLi.setAttribute("id", "iGo1")
+        // let newestDiv = document.createElement("div")
+        // secondButLi.appendChild(newestDiv)
+        // secondButLi.classList.add("slideRightLess")
 
-        newestDiv.classList.add("button_slide")
-        newestDiv.classList.add("slide_down")
-        //text in second button
-        var textt = document.createTextNode("Activate Card")
-        newestDiv.appendChild(textt)
+        // newestDiv.classList.add("button_slide")
+        // newestDiv.classList.add("slide_down")
+        // //text in second button
+        // var textt = document.createTextNode("Activate Card")
+        // newestDiv.appendChild(textt)
 
 
     // sets id of UL to newCardInHand, to be called for later use.
@@ -249,11 +242,9 @@ function createFocusedCard(clicked_id) {
 
 function removeFocusedCard() {
     let removeThis = document.getElementById("focusedCard")
-    let removeThis2 = document.getElementById("iGo2")
-    let removeThis3 = document.getElementById("iGo1")
+
     removeThis.remove()
-    removeThis2.remove()
-    removeThis3.remove()
+
 }
 
 // console.log(drawnCard)
@@ -299,3 +290,4 @@ function nextTurn(){
    }
 
 }
+

@@ -102,10 +102,10 @@
     margin-bottom: 20% !important;
   }
 
-  #createNewHandHere {
+  /* #createNewHandHere {
 
     margin-top: -20% !important;
-  }
+  } */
 
   @media all and (max-width: 1000px) and (min-width: 700px) {
     #createNewHandHere {
@@ -116,3 +116,76 @@
   #focusCardButton {
       margin-top: -65% !important;
   }  
+
+
+  .rotateSpaceRight {
+    transform: rotate(90deg);
+  }
+
+  #newCardInHand12 {
+    left: -5em !important;
+    z-index: 100;
+  }
+
+  #newCardInHand0onBoard {
+    z-index: 100;
+  }
+
+  #newCardInHand11 {
+    left: 1.1em !important;
+    z-index: 100;
+  }
+
+  #newCardInHand1onBoard {
+    z-index: 100;
+  }
+  
+  #newCardInHand10 {
+    left: 7.2em !important;
+    z-index: 100;
+  }
+
+  #newCardInHand9 {
+    left: 13.3em !important;
+    z-index: 100;
+  }
+
+  #newCardInHand8 {
+    left: 19.4em !important;
+    z-index: 100;
+  }
+
+  #newCardInHand7 {
+    left: 25.5em !important;
+    z-index: 100;
+  }
+
+  #newCardInHand6 {
+    left: 31.6em !important;
+    z-index: 100;
+  }
+
+  #newCardInHand5 {
+    left: -11.3em !important;
+    z-index: 100;
+  }
+
+  .cardSpace0 {
+    margin-left: -2.5em !important;
+  }
+
+  .cardSpace1 {
+    margin-left: 2.2em !important;
+  }
+
+  .cardSpace2 {
+    margin-left: 6.8em !important;
+  }
+
+  .cardSpace3 {
+    margin-left: 11.5em !important;
+  }
+
+  .cardSpace4 {
+    margin-left: 16.2em !important;
+  }

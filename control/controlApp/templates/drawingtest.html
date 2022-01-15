@@ -105,7 +105,7 @@
 
 
 
-<button onclick="drawFromDeck()">Draw from Deck</button>
+
 <button onclick="cardtoHand()">Draw from Deck into hand</button>
 <button onclick="createFocusedCard()">createFocuedCardHere</button>
 
@@ -149,7 +149,7 @@ only usefull with something else dictating what classes, and with a loop iterati
         </div>
         <!-- TODO: disable scroll -->
 
-        <div class="bigPlayingCards faceImages">
+        <!-- <div class="bigPlayingCards faceImages">
             <ul class="hand" id="createNewHandHere">
                 <li class="bigCard rank-k nova"></li>
                     <li class="slideRight">
@@ -163,17 +163,25 @@ only usefull with something else dictating what classes, and with a loop iterati
                         </div>
                     </li>
             </ul>
-        </div>
-        <div class="playingCards rotateHand" id="currentSpotForHand">
+        </div> -->
+        <!-- <div class="playingCards rotateHand" id="currentSpotForHand">
             <ul class="hand" id="createNewHandHere">
                 
             </ul>
             
             
-        </div>
+        </div> -->
     </div>
     <div class="col col-3"></div>
-
+    <div class="playingCards faceImages rotateSpaceRight" id="createNewCardHere" style="min-height: 30vh; margin-left: -15em !important;">
+        <ul class="hand" id="#">
+            <li class="card rank-k cardSpace" style="margin-left: -2.5em !important;"></li>
+            <li class="card rank-k cardSpace" style="margin-left: 2.2em !important;"></li>
+            <li class="card rank-k cardSpace" style="margin-left: 6.8em !important;"></li>
+            <li class="card rank-k cardSpace" style="margin-left: 11.5em !important;"></li>
+            <li class="card rank-k cardSpace" style="margin-left: 16.2em !important;"></li>
+        </ul>
+    </div>
 </div>
 <br><br><br>
 <div class="playingCards faceImages">
