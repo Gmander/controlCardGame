@@ -40,6 +40,7 @@ function cardtoHandReal(x) {
     // creating id and li and adding class
     let newCardDiv = document.getElementById("createNewHandHere")
     let newUl = document.createElement("li")
+
     //sets id of UL to newCardInHand, to be called for later use.
     newUl.setAttribute("id", "newCardInHand" + cardsRemaining)
     newCardDiv.appendChild(newUl)

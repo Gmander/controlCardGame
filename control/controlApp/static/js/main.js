@@ -182,12 +182,46 @@ function createFocusedCard(clicked_id) {
     let cardClassezz = cardClassess.split(" ")
     console.log(cardClassezz[2])
     let thisIsThisCard = cardClassezz[2]
-    // creating id and li and adding class
+    // creating id and li and adding class/id
     let newCardDiv = document.getElementById("createFocusedCardHere")
+    let testtest = document.getElementById("focusCardButton")
     let newUl = document.createElement("li")
-    //sets id of UL to newCardInHand, to be called for later use.
+
+    
+        //first button
+        let firstButLi = document.createElement("li")
+        testtest.appendChild(firstButLi)
+        firstButLi.setAttribute("id", "iGo2")
+        let newerDiv = document.createElement("div")
+        firstButLi.appendChild(newerDiv)
+        firstButLi.classList.add("slideRight")
+        newerDiv.classList.add("button_slide")
+        newerDiv.classList.add("slide_down")
+       
+        //text in first button
+        var text = document.createTextNode("Play Card")
+            newerDiv.appendChild(text)
+
+
+
+        // second button
+        let secondButLi = document.createElement("li")
+        testtest.appendChild(secondButLi)
+        secondButLi.setAttribute("id", "iGo1")
+        let newestDiv = document.createElement("div")
+        secondButLi.appendChild(newestDiv)
+        secondButLi.classList.add("slideRightLess")
+
+        newestDiv.classList.add("button_slide")
+        newestDiv.classList.add("slide_down")
+        //text in second button
+        var textt = document.createTextNode("Activate Card")
+        newestDiv.appendChild(textt)
+
+
+    // sets id of UL to newCardInHand, to be called for later use.
     newUl.setAttribute("id", "focusedCard")
-    newCardDiv.appendChild(newUl)
+    testtest.appendChild(newUl)
     newUl.classList.add("bigCard");
     newUl.classList.add("rank-k");
     
@@ -211,7 +245,11 @@ function createFocusedCard(clicked_id) {
 
 function removeFocusedCard() {
     let removeThis = document.getElementById("focusedCard")
+    let removeThis2 = document.getElementById("iGo2")
+    let removeThis3 = document.getElementById("iGo1")
     removeThis.remove()
+    removeThis2.remove()
+    removeThis3.remove()
 }
 
 // console.log(drawnCard)

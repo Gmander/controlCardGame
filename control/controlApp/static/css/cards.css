@@ -743,7 +743,9 @@
     content: "\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666\00A0\2666 \A\2666\00A0\2666\00A0\2666";
 }
 
-
+.playingCards.faceImages .card.rank-k.cardSpace  {
+    opacity: .2;
+}
 
 
 .playingCards.faceImages .card.rank-k.wormhole  { background-image: url("../img/cards/wormhole.png"); background-size: contain;}

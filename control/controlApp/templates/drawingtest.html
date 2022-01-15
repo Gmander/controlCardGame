@@ -110,6 +110,7 @@
 <button onclick="createFocusedCard()">createFocuedCardHere</button>
 
 <br><br><br>
+
 <div class="playingCards faceImages">
     <ul class="hand" id="createNewHandHere">
         <li class="card rank-k cardSpace"></li>
@@ -118,6 +119,62 @@
 
 <!-- This version of Draw takes an existing list of ul, div, and spans, then adds the classes and text after. 
 only usefull with something else dictating what classes, and with a loop iterating through the set if ul, div, and spans -->
+<br><br><br>
+<div class="bigPlayingCards faceImages">
+    <ul class="hand" id="createNewHandHere">
+        <li class="bigCard rank-k nova"></li>
+    </ul>
+</div>
+<div class="row">
+    <div class="col col-3">
+        <button onclick="toggleHandDisplay()" id="toggleMeDaddy">Toggle Card View</button>
+    </div>
+    <div class="col col-4">
+        <div class="playingCards faceImages" id="createNewCardHere" style="min-height: 30vh ;">
+            <ul class="hand" id="#" style="bottom: 70px;">
+                <li class="card rank-k cardSpace" style="margin-left: -2.5em !important;"></li>
+                <li class="card rank-k cardSpace" style="margin-left: 2.2em !important;"></li>
+                <li class="card rank-k cardSpace" style="margin-left: 6.8em !important;"></li>
+                <li class="card rank-k cardSpace" style="margin-left: 11.5em !important;"></li>
+                <li class="card rank-k cardSpace" style="margin-left: 16.2em !important;"></li>
+            </ul>
+            <ul class="hand" id="#">
+                <li class="card rank-k cardSpace" style="margin-left: -2.5em !important;"></li>
+                <li class="card rank-k cardSpace" style="margin-left: 2.2em !important;"></li>
+                <li class="card rank-k cardSpace" style="margin-left: 6.8em !important;"></li>
+                <li class="card rank-k cardSpace" style="margin-left: 11.5em !important;"></li>
+                <li class="card rank-k cardSpace" style="margin-left: 16.2em !important;"></li>
+            </ul>
+
+        </div>
+        <!-- TODO: disable scroll -->
+
+        <div class="bigPlayingCards faceImages">
+            <ul class="hand" id="createNewHandHere">
+                <li class="bigCard rank-k nova"></li>
+                    <li class="slideRight">
+                        <div class="button_slide slide_down">
+                            Play Card
+                        </div>
+                    </li>
+                    <li class="slideRightLess">
+                        <div class="button_slide slide_down">
+                            Activate Card
+                        </div>
+                    </li>
+            </ul>
+        </div>
+        <div class="playingCards rotateHand" id="currentSpotForHand">
+            <ul class="hand" id="createNewHandHere">
+                
+            </ul>
+            
+            
+        </div>
+    </div>
+    <div class="col col-3"></div>
+
+</div>
 <br><br><br>
 <div class="playingCards faceImages">
     <ul class="hand">
