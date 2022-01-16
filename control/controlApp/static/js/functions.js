@@ -45,11 +45,84 @@ function classSelect(string){
 function s2o(cardString){
   let classActual = ObjectDict[cardString]
   return new classActual()
+}
+
+function handGen(turn_var){
+  let array = []
+  for(let x of PlayedArray){
+    if(x.owner === turn_var ){
+      array.push(x.name)
+    }
 
 
+  }
+  return array
+
+}
+
+function boardGen(){
+  for(let x of PlayedArray){
+      if(x.inPlay === 1){
+        BoardDisplay(x.name, x.owner)
+      }
 
 
+  }
+  /// going with two variables
+
+}
+
+function discardGen(){
+    let array = []
+  for(let x of PlayedArray){
+    if(x.discarded === 1 ){
+      array.push(x.name)
+    }
 
 
+  }
+  return array
+}
+//Todo aidan
+function BoardDisplay(name,owner){
+  //this function posses's card type in its scope.
+  switch(owner){
+    case 0:
+      //place a card of type name in owners row
+      break;
+    case 1:
+      //place a card of type name in owners row
+      break;
+    case 2:
+      //place a card of type name in owners row
+      break;
+    case 3:
+      //place a card of type name in owners row
+      break;
+  }
+
+}
+//todo cant discard cards not owned by player
+function discardCard(clicked_id){
+   let thisId = document.getElementById(clicked_id)
+    let cardClassess = thisId.className
+    let cardClassezz = cardClassess.split(" ")
+    let objectLiteral = s2o(cardClassezz[2])
+    for( let x of PlayedArray){
+      if((objectLiteral.name === x.name) &&(objectLiteral.owner)=== turnCount  ){
+        if(x.discarded === 0){
+          x.discarded = 1;
+          x.inPlay = 0;
+          x.owner = -1;
+          return;
+
+        }
+      }
+
+    }
+
+}
+
+function getOwner(on_click){
 
 }
