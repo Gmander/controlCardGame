@@ -51,3 +51,141 @@
     -webkit-transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
     transition: all .7s cubic-bezier(0.77, 0, 0.175, 1);
   }
+
+/* button slide */
+
+  .button_slide {
+    color: #FFF;
+    border: 2px solid rgb(89, 2, 187);
+    border-radius: 0px;
+    padding: 18px 36px;
+    display: inline-block;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 #D80286;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+    text-align: center !important;
+  }
+  
+  .slide_down:hover {
+    box-shadow: inset 0 100px 0 0 #D80286;
+  }
+  
+  .slide_right:hover {
+    box-shadow: inset 400px 0 0 0 #D80286;
+  }
+  
+  .slide_left:hover {
+    box-shadow: inset 0 0 0 50px #D80286;
+  }
+  
+  .slide_diagonal:hover {
+    box-shadow: inset 400px 50px 0 0 #D80286;
+  }
+  
+  #outer {
+    width: 364px;
+    margin: 50px auto 0 auto;
+    text-align: center;
+  }
+
+  .slideRight {
+    padding-left: 17em !important;
+    margin-bottom: 55% !important;
+  }
+  .slideRightLess {
+    padding-left: 15em !important;
+    margin-bottom: 20% !important;
+  }
+
+  /* #createNewHandHere {
+
+    margin-top: -20% !important;
+  } */
+
+  @media all and (max-width: 1000px) and (min-width: 700px) {
+    #createNewHandHere {
+     margin-top: 50px !important;
+    }
+  }
+
+  #focusCardButton {
+      margin-top: -65% !important;
+  }  
+
+
+  .rotateSpaceRight {
+    transform: rotate(90deg);
+  }
+
+  #newCardInHand12 {
+    left: -5em !important;
+    z-index: 100;
+  }
+
+  #newCardInHand0onBoard {
+    z-index: 100;
+  }
+
+  #newCardInHand11 {
+    left: 1.1em !important;
+    z-index: 100;
+  }
+
+  #newCardInHand1onBoard {
+    z-index: 100;
+  }
+  
+  #newCardInHand10 {
+    left: 7.2em !important;
+    z-index: 100;
+  }
+
+  #newCardInHand9 {
+    left: 13.3em !important;
+    z-index: 100;
+  }
+
+  #newCardInHand8 {
+    left: 19.4em !important;
+    z-index: 100;
+  }
+
+  #newCardInHand7 {
+    left: 25.5em !important;
+    z-index: 100;
+  }
+
+  #newCardInHand6 {
+    left: 31.6em !important;
+    z-index: 100;
+  }
+
+  #newCardInHand5 {
+    left: -11.3em !important;
+    z-index: 100;
+  }
+
+  .cardSpace0 {
+    margin-left: -2.5em !important;
+  }
+
+  .cardSpace1 {
+    margin-left: 2.2em !important;
+  }
+
+  .cardSpace2 {
+    margin-left: 6.8em !important;
+  }
+
+  .cardSpace3 {
+    margin-left: 11.5em !important;
+  }
+
+  .cardSpace4 {
+    margin-left: 16.2em !important;
+  }
