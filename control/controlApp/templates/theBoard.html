@@ -70,21 +70,21 @@
     <div class="col col-3">
         <button onclick="toggleDiscardPlay()" id="toggleMeDaddy">Toggle Discard</button>
     </div>
-    <div class="col col-4">
+    <div class="col col-6">
         <div class="playingCards faceImages" id="createNewCardHere" style="min-height: 30vh ;">
-            <ul class="hand" id="#" style="bottom: 100px;">
-                <li class="card rank-k cardSpace cardSpace0"></li>
-                <li class="card rank-k cardSpace cardSpace1"></li>
-                <li class="card rank-k cardSpace cardSpace2"></li>
-                <li class="card rank-k cardSpace cardSpace3"></li>
-                <li class="card rank-k cardSpace cardSpace4"></li>
+            <ul class="hand" id="player1Board" style="bottom: 100px; z-index: 1000;">
+                <li class="card rank-k cardSpace cardSpace0" id="p1BoardSlot0"></li>
+                <li class="card rank-k cardSpace cardSpace1" id="p1BoardSlot1"></li>
+                <li class="card rank-k cardSpace cardSpace2" id="p1BoardSlot2"></li>
+                <li class="card rank-k cardSpace cardSpace3" id="p1BoardSlot3"></li>
+                <li class="card rank-k cardSpace cardSpace4" id="p1BoardSlot4"></li>
             </ul>
-            <ul class="hand" id="player1Board" style="bottom: 100px;">
-                <li class="card rank-k cardSpace cardSpace0" id="p1BoardSlotOne"></li>
-                <li class="card rank-k cardSpace cardSpace1" id="p1BoardSlotTwo"></li>
-                <li class="card rank-k cardSpace cardSpace2" id="p1BoardSlotThree"></li>
-                <li class="card rank-k cardSpace cardSpace3" id="p1BoardSlotFour"></li>
-                <li class="card rank-k cardSpace cardSpace4" id="p1BoardSlotFive"></li>
+            <ul class="hand" id="player0Board" style="bottom: 100px;">
+                <li class="card rank-k cardSpace cardSpace0" id="p0BoardSlot0"></li>
+                <li class="card rank-k cardSpace cardSpace1" id="p0BoardSlot1"></li>
+                <li class="card rank-k cardSpace cardSpace2" id="p0BoardSlot2"></li>
+                <li class="card rank-k cardSpace cardSpace3" id="p0BoardSlot3"></li>
+                <li class="card rank-k cardSpace cardSpace4" id="p0BoardSlot4"></li>
             </ul>
 
         </div>
@@ -93,14 +93,20 @@
                 
             </ul>
         </div>
-        <div class="playingCards faceImages" id="currentSpotForHand">
+    </div>
+</div>
+<div class="row">
+    <div class="col col-2"></div>
+        <div class="playingCards faceImages" style="top: 20%;" id="currentSpotForHand">
             <ul class="hand" id="createNewHandHere">
             </ul>
         </div>
     </div>
-    <div class="col col-3"></div>
-
+    <div class="col col-3">
+        <button class="btn" onclick="clearBoard()">End Turn</button>
+    </div>
 </div>
+
     
 
 
