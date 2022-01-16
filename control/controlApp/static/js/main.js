@@ -304,8 +304,9 @@ function onDiscard(clicked_id){
     switch(thisIsThisCard){
         case "singularity":
             for(let x of PlayedArray){
+                if(x.name === "deflector") continue;
                 if(x.inPlay){
-                  //  discardCard(x)
+                    discardCard(x)
                 }
             }
             break;
@@ -419,7 +420,7 @@ function nextTurn(){
    }
    ///aidans front end board wiping
 
-
+    alert("it is now the next players turn")
     drawCard(turnCount)
 
 
