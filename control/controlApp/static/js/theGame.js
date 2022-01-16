@@ -31,26 +31,35 @@ function realRemoveCardFromDeck() {
 
 
 
+var varNums = 1
+function counterfun() {
+  console.log(varNums)
+    varNums++
+    console.log(varNums)
+}
 function cardtoHandReal(x) {
     //Determining the card to pull from deck.
     let drawnCard = ObjectArray.pop()
+    deckCounter = ObjectArray.length
     drawnCard.owner = x;
     PlayedArray.push(drawnCard)
     realRemoveCardFromDeck()
     // creating id and li and adding class
     let newCardDiv = document.getElementById("createNewHandHere")
     let newUl = document.createElement("li")
-
+    counterfun()
     //sets id of UL to newCardInHand, to be called for later use.
-    newUl.setAttribute("id", "newCardInHand" + cardsRemaining)
+    newUl.setAttribute("id", "newCardInHand" + varNums)
     newCardDiv.appendChild(newUl)
     newUl.classList.add("card");
     newUl.classList.add("rank-k");
     
     newUl.classList.add(drawnCard.name);
+    newUl.classList.add(turnCount);
     newUl.setAttribute("onmouseover","createFocusedCard(this.id)");
     newUl.setAttribute("onclick","placeCardOnBoard(this.id)");
     newUl.setAttribute("onmouseout","removeFocusedCard()");
+    
     console.log(drawnCard.name)   
     return drawnCard.name
 }
@@ -81,6 +90,8 @@ function placeCardOnBoard(clicked_id) {
     }
     return counterrr++
 }
+
+
 
 function placeCardOnBoardPlayer1(clicked_id) {
     console.log(counterrr)
@@ -224,7 +235,15 @@ function returnBoardCardOwner(clicked_id) {
 
 }
 
-function returnBoardCardOwnerForclearBoard(x) {
+function returnBoardCardOwnerForclearBoard(clicked_id) {
+    let thisElement = document.getElementById(clicked_id)
+    let thisId = thisElement.id
+    var thenum = thisId.replace( /^\D+/g, '');
+    console.log(thenum)
+    return(thenum)
+}
+
+function returnCardOwnerFromId(x) {
     var thenum = x.replace( /^\D+/g, '');
     return(thenum)
 
@@ -243,7 +262,6 @@ function clearBoard() {
         console.log(ownerOfCard)
         //TODO pass ownerOfCard to Hussain
         firstCard.remove()
-
     }
 
     //player1's hand

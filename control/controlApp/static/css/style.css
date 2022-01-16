@@ -126,7 +126,7 @@
     transform: rotate(90deg);
   }
 
-  #newCardInHand12 {
+  #newCardInHand1 {
     left: -5em !important;
     z-index: 100;
   }
@@ -188,7 +188,7 @@
     z-index: 100;
   }
 
-  #newCardInHand11 {
+  #newCardInHand2 {
     left: 1.1em !important;
     z-index: 100;
   }
@@ -197,32 +197,32 @@
     z-index: 100;
   }
   
-  #newCardInHand10 {
+  #newCardInHand3{
     left: 7.2em !important;
     z-index: 100;
   }
 
-  #newCardInHand9 {
+  #newCardInHand4 {
     left: 13.3em !important;
     z-index: 100;
   }
 
-  #newCardInHand8 {
+  #newCardInHand5 {
     left: 19.4em !important;
     z-index: 100;
   }
 
-  #newCardInHand7 {
+  #newCardInHand6 {
     left: 25.5em !important;
     z-index: 100;
   }
 
-  #newCardInHand6 {
+  #newCardInHand7 {
     left: 31.6em !important;
     z-index: 100;
   }
 
-  #newCardInHand5 {
+  #newCardInHand8 {
     left: -11.3em !important;
     z-index: 100;
   }

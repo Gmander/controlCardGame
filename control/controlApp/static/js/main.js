@@ -11,6 +11,7 @@ var maxTurnCount = parseInt(prompt("how many players are there?"))
 var diffusedPoints = 0
 var riftPoints = 0
 var exoticPoints = 0
+var deckCounter = 0
 CardArray = shuffle(CardArray)
 
 var Alength= CardArray.length
@@ -419,6 +420,10 @@ function nextTurn(){
        turnCount += 1
    }
    ///aidans front end board wiping
+   clearBoard()
+   populateBoard()
+   createHand(turnCount)
+   varNum = 0;
 
     alert("it is now the next players turn")
     drawCard(turnCount)

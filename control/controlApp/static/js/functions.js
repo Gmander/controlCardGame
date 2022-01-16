@@ -84,24 +84,124 @@ function discardGen(){
   return array
 }
 //Todo aidan
+var varNum = 1
+function counterfuns() {
+  console.log(varNum)
+    varNum++
+    console.log(varNum)
+}
+function CreateCard(name, owner) {
+  counterfuns()
+  // creating id and li and adding class
+  let newCardDiv = document.getElementById("createNewHandHere")
+  let newUl = document.createElement("li")
+  //determine cards remaining
+  let liCardsInDeck = document.getElementsByTagName("ul")[0].getElementsByTagName('li');
+  // console.log(liCardsInDeck)
+  // cardsRemaining = (liCardsInDeck.length)
+
+
+  //sets id of UL to newCardInHand, to be called for later use.
+  newUl.setAttribute("id", "newCardInHand" + varNum)
+  
+  newCardDiv.appendChild(newUl)
+  newUl.classList.add("card");
+  newUl.classList.add("rank-k");
+  newUl.classList.add(name);
+  newUl.classList.add(owner);
+  newUl.setAttribute("onmouseover","createFocusedCard(this.id)");
+  newUl.setAttribute("onclick","placeCardOnBoard(this.id)");
+  newUl.setAttribute("onmouseout","removeFocusedCard()");
+  console.log(name)   
+  return newUl
+}
+
+var varNumz = 1
+function counterfunz() {
+  console.log(varNum)
+    varNumz++
+    console.log(varNumz)}
+function CreateCardBoard(name, owner) {
+  counterfunz()
+  // creating id and li and adding class
+  let newCardDiv = document.getElementById("createNewHandHere")
+  let newUl = document.createElement("li")
+  //determine cards remaining
+  let liCardsInDeck = document.getElementsByTagName("ul")[0].getElementsByTagName('li');
+  // console.log(liCardsInDeck)
+  // cardsRemaining = (liCardsInDeck.length)
+
+
+  //sets id of UL to newCardInHand, to be called for later use.
+  newUl.setAttribute("id", "newCardInHand" + varNum)
+  
+  newCardDiv.appendChild(newUl)
+  newUl.classList.add("card");
+  newUl.classList.add("rank-k");
+  newUl.classList.add(name);
+  newUl.classList.add(owner);
+  newUl.setAttribute("onmouseover","createFocusedCard(this.id)");
+  newUl.setAttribute("onclick","placeCardOnBoard(this.id)");
+  newUl.setAttribute("onmouseout","removeFocusedCard()");
+  console.log(name)   
+  return newUl
+}
+
+function getOwner(clicked_id){
+  let thisId = document.getElementById(clicked_id)
+  let cardClassess = thisId.className
+  let cardClassezz = cardClassess.split(" ")
+  let thisIsThisCard = cardClassezz[3]
+  return thisIsThisCard
+}
+
 function BoardDisplay(name,owner){
-  //this function posses's card type in its scope.
-  switch(owner){
-    case 0:
-      //place a card of type name in owners row
-      break;
-    case 1:
-      //place a card of type name in owners row
-      break;
-    case 2:
-      //place a card of type name in owners row
-      break;
-    case 3:
-      //place a card of type name in owners row
-      break;
+  for( let x of PlayedArray){
+    if(x.inPlay === 1){
+      switch(owner){
+        case 0:
+          //place a card of type name in owners row
+          CreateCard(name, owner)
+    
+    
+          break;
+        case 1:
+          //place a card of type name in owners row
+          CreateCard(name, owner)
+          break;
+        case 2:
+          //place a card of type name in owners row
+          CreateCard(name, owner)
+          break;
+        case 3:
+          //place a card of type name in owners row
+          CreateCard(name, owner)
+          break;
+      }
+    }
   }
+  //this function posses's card type in its scope.
+
 
 }
+
+function createHand(turn_var){
+  let array = handGen(turn_var)
+  for(let x in array){
+    CreateCard(x.name, turn_var);
+  }
+  
+
+  
+}
+
+function populateBoard() {
+  for(let x of PlayedArray) {
+    BoardDisplay(x.name, x.owner)
+    
+  }
+}
+
 //todo cant discard cards not owned by player
 function discardCard(clicked_id){
    let thisId = document.getElementById(clicked_id)
@@ -124,5 +224,8 @@ function discardCard(clicked_id){
 }
 
 function getOwner(on_click){
-
+  let thisId = document.getElementById(clicked_id)
+  let cardClassess = thisId.className
+  let cardClassezz = cardClassess.split(" ")
+  let objectLiteral = s2o(cardClassezz[3])
 }
