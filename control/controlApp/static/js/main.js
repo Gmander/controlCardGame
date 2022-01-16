@@ -1,9 +1,16 @@
-//This is the creation of the deck.
+//This is the creation of the deck and counters
 var CardArray = [singularity, rift,timeStop,futureShift,exoticMatter, forceField, deflector, reactor,wormhole, nova,darkEnergy, antimatter]
 var ObjectDict = {"singularity":singularity,"rift":rift,"timeStop":timeStop,"futureShift":futureShift, "exoticMatter":exoticMatter, "forceField":forceField, "deflector":deflector, "reactor":reactor, "wormhole":wormhole, "nova":nova,"darkEnergy":darkEnergy,"antimatter":antimatter}
 var ObjectArray = []
 var PlayedArray = []
-
+var cardCounter = 0
+var turnCount = 0
+var player1hs = 0
+var player2hs, player3hs, player4hs
+var maxTurnCount = parseInt(prompt("how many players are there?"))
+var diffusedPoints = 0
+var riftPoints = 0
+var exoticPoints = 0
 CardArray = shuffle(CardArray)
 
 var Alength= CardArray.length
@@ -19,9 +26,6 @@ for(let x =0 ; x<Alength; x++){
 }
 
 x=1
-var cardCounter = 0
-var turnCount = 0
-var maxTurnCount = parseInt(prompt("how many players are there?"))
 console.log("cardCounter = " + cardCounter)
 
 // This version of Draw takes an existing list of ul, div, and spans, then adds the classes and text after. 
@@ -98,6 +102,13 @@ function removeCardFromDeck() {
 
 // function for converting output of topCardOfDeck() into frontend reaction
 function drawCard(x) {
+          let playersHand = handCount(turnCount)
+    if( playersHand > 7){
+        //TODO tell player no more cards can be drawn
+    }
+   else {
+
+
         //Determining the card to pull from deck.
         let drawnCard = ObjectArray.pop()
         drawnCard.owner = x;
@@ -111,12 +122,13 @@ function drawCard(x) {
         newCardDiv.appendChild(newUl)
         newUl.classList.add("card");
         newUl.classList.add("rank-k");
-        
+
         newUl.classList.add(drawnCard.name);
-        
-        console.log(drawnCard.name)   
-        
+
+        console.log(drawnCard.name)
+
         return drawnCard.name
+    }
 }
 
 // function for converting output of topCardOfDeck() into frontend reaction into your hand
@@ -142,11 +154,7 @@ function cardtoHand() {
 }
         // the x indicates that this card is going into player one's hand.
         //This variable should be redefined in main scope of main.js. It defaulted to one here for testing purposes.
-function drawFromDeck() {
-    drawCard(x);
-    
 
-}
 
 function addPadding() {
     let disId = document.getElementById("usee")
@@ -196,11 +204,125 @@ function createFocusedCard(clicked_id) {
     newUl.classList.add(thisIsThisCard);
     newUl.setAttribute("onclick","removeFocusedCard()");
     console.log(thisIsThisCard)
-    s2o(thisIsThisCard).doSomething()//this code runs the method associated with the object //4test only singularity has a method
     //TODO add a function which puts a card of the class played in play and delete from players hand i.e setting owner prop to null
     return thisIsThisCard
 }
 
+function onPlay(clicked_id){
+    let thisId = document.getElementById(clicked_id)
+    let cardClassess = thisId.className
+    let cardClassezz = cardClassess.split(" ")
+    console.log(cardClassezz[2])
+    let thisIsThisCard = cardClassezz[2]
+    let objectLiteral = s2o(thisIsThisCard)
+    let selectedObject = getPlayedArray(objectLiteral, "inPlay")
+    //todo add line disallowing playing of opponents board
+    selectedObject.inPlay = 1; // TODO for this to work on rift play, all cards on board must be onPlay(), needs to be !adjusted so u cant "play" someone elses cards on board.
+    if((objectLiteral.name === "rift") || (riftPoints === 1)){
+        //do rift action
+        if(riftPoints === 0){
+            riftPoints = 1
+            return; // put card in center
+        }
+        else{
+            if(checkDeflector(selectedObject.owner)=== 1){
+                alert("cannot use this on deflector")
+                return;
+            }
+            discardCard(selectedObject)
+            //TODO card must be deleted in html
+            riftPoints = 0;
+            nextTurn()
+            return;
+
+        }
+
+    }
+    if(selectedObject.name === "exoticMatter" || (exoticPoints===1)){
+        if(exoticPoints === 0){
+            exoticPoints = 1
+            return
+        }
+        else{
+            if(selectedObject.points>3 ){
+                alert("choose a card less than or equal to 3 points")//todo put the card in hand again
+                selectedObject.inPlay = 0;
+                return
+            }
+            exoticPoints = 0;
+        }
+        // allow onPlay of 3 or lower value card then end turn, if three or lower card not picked alert error
+
+    }
+    nextTurn()
+}
+
+function onDiscard(clicked_id){
+    let thisId = document.getElementById(clicked_id)
+    let cardClassess = thisId.className
+    let cardClassezz = cardClassess.split(" ")
+    console.log(cardClassezz[2])
+    let thisIsThisCard = cardClassezz[2]
+    // card must be discarded
+    discardCard(thisIsThisCard)//todo  wrong param
+    //card action must take place if unstable
+    let objectLiteral = s2o(thisIsThisCard)
+    switch(thisIsThisCard){
+        case "singularity":
+            for(let x of PlayedArray){
+                if(x.inPlay){
+                  //  discardCard(x)
+                }
+            }
+            break;
+        case "antimatter":
+            break;
+        case "darkEnergy":
+            break;
+        case "wormhole":
+            break;
+        case "futureShift":
+            break;
+        case "timeStop":
+            break;
+
+
+
+    }
+    nextTurn()
+    //next turn
+}
+
+function onDiffuse(clicked_id){
+    let thisId = document.getElementById(clicked_id)
+    let cardClassess = thisId.className
+    let cardClassezz = cardClassess.split(" ")
+    console.log(cardClassezz[2])
+    let thisIsThisCard = cardClassezz[2]
+    let objectLiteral = s2o(thisIsThisCard)
+    let card = getPlayedArray(objectLiteral,"discarded" )
+    if(diffusedPoints === 0){
+        card.discarded = 1;
+        diffusedPoints = 1;
+    }
+    else{
+        if((card.points> diffusedPoints) || (checkForceField(card.owner)===1) ){
+            alert("pick a card with a lower point value or pick a different player")
+            return;
+        }
+        discardCard(clicked_id)
+        card.inPlay = 0;
+        diffusedPoints = 0;
+    }
+
+
+
+
+
+
+
+
+}
 
 // function focusCard(clicked_id) {
 //     //what is the card we are pulling?
@@ -259,5 +381,98 @@ function nextTurn(){
    else{
        turnCount += 1
    }
+   ///aidans front end board wiping
+
+
+    drawCard(turnCount)
+
 
 }
+
+function handCount(owner){
+    for(let x of PlayedArray) {
+        switch (x.owner) {
+            case 0:
+                player1hs += 1;
+                break;
+            case 1:
+                player2hs += 1;
+                break;
+            case 2:
+                player3hs += 1;
+                break;
+            case 3:
+                player4hs += 1;
+                break;
+        }
+    }
+
+  switch(owner){
+    case 0:
+      return player1hs
+    case 1:
+     return player2hs
+    case 2:
+     return player3hs
+    case 3:
+      return player4hs
+  }
+}
+
+ // function actionSelect(){
+ //    let choice = prompt("Choose an action \n 1.draw \n 2.play card\n 3.Discard\n 4.Defuse" ,"0")
+ //    choice = parseInt(choice)
+ //    if(choice<=0 || choice>4 || (!(choice%1==0))){
+ //        alert("please choose a valid option")
+ //        actionSelect()
+ //    }
+ //    return choice;
+ //  }
+
+function getPlayedArray(objectLiteral, property){
+      for( let x of PlayedArray){
+      if((objectLiteral.name === x.name) &&(objectLiteral.owner)=== turnCount  ){
+        if(x[property] === 0){
+          return x
+
+        }
+      }
+
+    }
+
+
+
+}
+
+function checkForceField(owner){
+    for(let x of PlayedArray){
+        if((x.owner === owner)&&(x.inPlay === 1)){
+            if(x.name === "forceField"){
+                return 1;
+            }
+        }
+    }
+    return 0;
+
+}
+
+function checkDeflector(owner){
+       for(let x of PlayedArray){
+        if((x.owner === owner)&&(x.inPlay === 1)){
+            if(x.name === "deflector"){
+                return 1;
+            }
+        }
+    }
+    return 0;
+
+}
+
+
+
+
+
+
+
+
+
