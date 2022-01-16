@@ -61,7 +61,34 @@ function placeCardOnBoard(clicked_id) {
     console.log(clicked_id)
     let clone = thisId.cloneNode(true)
     thisId.remove()
-    // let newPlace = document.getElementById("p1BoardSlotOne")
+    // let newPlace = document.getElementById("p0BoardSlotOne")
+    let newPlaceThing = document.getElementById("player0Board")
+    console.log(newPlaceThing)
+    let newPlace = newPlaceThing.firstChild
+    let oldPlace = newPlaceThing.getElementsByTagName("li")[counterrr]
+    console.log(oldPlace)
+
+    clone.classList.add("cardSpace" + counterrr)
+    clone.setAttribute("id", "newCardInHandonBoard" + counterrr)
+    clone.setAttribute("onclick", "returnBoardCardOwner(this.id)")
+
+    oldPlace.replaceWith(clone)
+    
+    removeFocusedCard()
+    console.log(counterrr)
+    if(counterrr == 4){
+        counterrr = 0
+    }
+    return counterrr++
+}
+
+function placeCardOnBoardPlayer1(clicked_id) {
+    console.log(counterrr)
+    let thisId = document.getElementById(clicked_id)
+    console.log(clicked_id)
+    let clone = thisId.cloneNode(true)
+    thisId.remove()
+    // let newPlace = document.getElementById("p0BoardSlotOne")
     let newPlaceThing = document.getElementById("player1Board")
     console.log(newPlaceThing)
     let newPlace = newPlaceThing.firstChild
@@ -69,13 +96,10 @@ function placeCardOnBoard(clicked_id) {
     console.log(oldPlace)
 
     clone.classList.add("cardSpace" + counterrr)
-    clone.setAttribute("id", "newCardInHand" + counterrr + "onBoard")
-
-
-    
+    clone.setAttribute("id", "onenewCardInHandonBoard" + counterrr)
+    clone.setAttribute("onclick", "returnBoardCardOwner(this.id)")
 
     oldPlace.replaceWith(clone)
-    
     removeFocusedCard()
     console.log(counterrr)
     if(counterrr == 4){
@@ -148,7 +172,7 @@ function toggleDiscardPlay() {
     for(let ce=1; ce<whatChange; ce++) {
         let whatChanges = document.getElementById("createNewHandHere").childNodes[ce]
         console.log(whatChanges)
-        whatChanges.setAttribute("onclick", "discard()")
+        whatChanges.setAttribute("onclick", "discard(this.id)")
         // whatChanges.remove()
     }
 
@@ -167,21 +191,150 @@ function togglePlayDiscard() {
     for(let ce=1; ce<whatChange; ce++) {
         let whatChanges = document.getElementById("createNewHandHere").childNodes[ce]
         console.log(whatChanges)
-        whatChanges.setAttribute("onclick", "placeCardOnBoard(this.id)")
+        whatChanges.setAttribute("onclick", "placeCardOnBoardPlayer1(this.id)")
+        // TODO change back to placeCardOnBoard
     }
 }
 
-
-function discard() {
-    let whatChange = document.getElementById("createNewHandHere").childElementCount
-    console.log(whatChange)
-
-    whatChange++
-    console.log(whatChange)
-    for(let ce=1; ce<whatChange; ce++) {
-        let whatChanges = document.getElementById("createNewHandHere").childNodes[ce]
-        console.log(whatChanges)
-        whatChanges.setAttribute("onclick", "discard()")
-        // whatChanges.remove()
+countr = 0
+function discard(clicked_id) {
+    let thisId = document.getElementById(clicked_id)
+    let discardSpot = document.getElementById("discardDeckHere")
+    console.log(thisId)
+    let clone = thisId.cloneNode(true)
+    clone.setAttribute("id", "newCardInDiscardonBoard" + countr)
+    discardSpot.appendChild(clone)
+    thisId.remove()
+    removeFocusedCard()
+    if(countr == 6){
+        // its 6 here because I only made 6 Id classes. Honestly it should be made dynamically. idc TODO
+        countr = 0
     }
+    return countr++
+
+
+    }
+
+function returnBoardCardOwner(clicked_id) {
+    let thisElement = document.getElementById(clicked_id)
+    let thisId = thisElement.id
+    var thenum = thisId.replace( /^\D+/g, '');
+    console.log(thenum)
+    return(thenum)
+
 }
+
+function returnBoardCardOwnerForclearBoard(x) {
+    var thenum = x.replace( /^\D+/g, '');
+    return(thenum)
+
+}
+
+//Holy fuck. here it goes
+function clearBoard() {
+    //player0's hand
+    let player0hand = document.getElementById("createNewHandHere")
+    let nCardsinHand0 = player0hand.childElementCount
+    for(v=0; v<nCardsinHand0; v++) {
+        let firstCard = player0hand.firstElementChild
+        console.log(firstCard)
+        let firstCardId = firstCard.id
+        let ownerOfCard = returnBoardCardOwnerForclearBoard(firstCardId)
+        console.log(ownerOfCard)
+        //TODO pass ownerOfCard to Hussain
+        firstCard.remove()
+
+    }
+
+    //player1's hand
+    let player1hand = document.getElementById("createNewHandHere")
+    let nCardsinHand1 = player0hand.childElementCount
+    for(v=0; v<nCardsinHand1; v++) {
+        let firstCard = player1hand.firstElementChild
+        let firstCardId = firstCard.id
+        let ownerOfCard = returnBoardCardOwnerForclearBoard(firstCardId)
+        console.log(ownerOfCard)
+        //TODO pass ownerOfCard to Hussain
+        firstCard.remove()
+
+    }
+
+    //player0's board/cards in play
+    let player0board = document.getElementById("player0Board")
+    let nCardsonBoard0 = player0board.childElementCount
+    console.log(nCardsonBoard0)
+    
+    for(v=0; v<nCardsonBoard0; v++) {
+        let firstCard1 = player0board.children
+        //see if there is a card in the space or if it is an empty card space
+        let cardNeeded = firstCard1.item(v)
+        console.log(cardNeeded)
+        let firstCardId = cardNeeded.id
+        if(firstCardId.startsWith("p0BoardSlot")) {
+            break
+        }
+        else{
+        let ownerOfCard = returnBoardCardOwnerForclearBoard(firstCardId)
+        console.log(ownerOfCard)
+        //TODO pass ownerOfCard to Hussain
+
+        //Create empty card space
+        let emptyCardSpace = document.createElement("li")
+        emptyCardSpace.classList.add("card");
+        emptyCardSpace.classList.add("rank-k");
+        emptyCardSpace.classList.add("cardSpace");
+        emptyCardSpace.classList.add("cardSpace" + v);
+        emptyCardSpace.setAttribute("id", "p0BoardSlot" + v)
+        cardNeeded.replaceWith(emptyCardSpace)
+        }
+
+    }
+
+    //player1's board/cards in play
+    let player1board = document.getElementById("player1Board")
+    let nCardsonBoard1 = player1board.childElementCount
+    
+    for(v=0; v<nCardsonBoard1; v++) {
+        let firstCard1 = player1board.children
+        //see if there is a card in the space or if it is an empty card space
+        let cardNeeded = firstCard1.item(v)
+        console.log(cardNeeded)
+        let firstCardId = cardNeeded.id
+        if(firstCardId.startsWith("p1BoardSlot")) {
+            break
+        }
+        else{
+        let ownerOfCard = returnBoardCardOwnerForclearBoard(firstCardId)
+        console.log(ownerOfCard)
+        //TODO pass ownerOfCard to Hussain
+
+        //Create empty card space
+        let emptyCardSpace = document.createElement("li")
+        emptyCardSpace.classList.add("card");
+        emptyCardSpace.classList.add("rank-k");
+        emptyCardSpace.classList.add("cardSpace");
+        emptyCardSpace.classList.add("cardSpace" + v);
+        emptyCardSpace.setAttribute("id", "p1BoardSlot" + v)
+        cardNeeded.replaceWith(emptyCardSpace)
+        }
+
+    }
+    
+    //Draw deck
+    let drawDeck = document.getElementById("createDeckHere")
+    let nCardsinDeck = drawDeck.childElementCount
+    console.log(nCardsinDeck + "num cards in deck")
+    //TODO pass nCardsinDeck to Hussain
+    while (drawDeck.firstChild) {
+        drawDeck.removeChild(drawDeck.firstChild);
+    }
+
+    //Discard pile
+    let discardPile = document.getElementById("discardDeckHere")
+    while (discardPile.firstChild) {
+        discardPile.removeChild(discardPile.firstChild);
+    }
+
+}
+
+//TODO wont work if there is an empty card space before there is an occupied one. Ez fix if I don't have to pass anything to Hussy

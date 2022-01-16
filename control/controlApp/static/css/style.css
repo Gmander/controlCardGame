@@ -1,6 +1,10 @@
 .tempPadding {
     margin-bottom: 3.5em !important;
-    z-index: 10000;
+    z-index: 100000;
+}
+
+#currentSpotForHand {
+  margin-top: 12em;
 }
 
 /* Button 9 */
@@ -127,7 +131,60 @@
     z-index: 100;
   }
 
-  #newCardInHand0onBoard {
+  #newCardInHandonBoard0 {
+    z-index: 100;
+  }
+
+  #onenewCardInHandonBoard0 {
+    z-index: 100;
+    transform: rotate(180deg);
+  }
+
+  #onenewCardInHandonBoard1 {
+    z-index: 100;
+    transform: rotate(180deg);
+  }
+
+  #onenewCardInHandonBoard2 {
+    z-index: 100;
+    transform: rotate(180deg);
+  }
+
+  #onenewCardInHandonBoard3 {
+    z-index: 100;
+    transform: rotate(180deg);
+  }
+
+  #onenewCardInHandonBoard4 {
+    z-index: 100;
+    transform: rotate(180deg);
+  }
+
+  #newCardInDiscardonBoard0 {
+    z-index: 100;
+  }
+
+  #newCardInDiscardonBoard1 {
+    z-index: 100;
+  }
+
+  #newCardInDiscardonBoard2 {
+    z-index: 100;
+  }
+
+  #newCardInDiscardonBoard3 {
+    z-index: 100;
+  }
+
+  #newCardInDiscardonBoard4 {
+    z-index: 100;
+  }
+
+  #newCardInDiscardonBoard5 {
+    z-index: 100;
+  }
+
+  #newCardInDiscardonBoard6 {
     z-index: 100;
   }
 
@@ -136,7 +193,7 @@
     z-index: 100;
   }
 
-  #newCardInHand1onBoard {
+  #newCardInHandonBoard1 {
     z-index: 100;
   }
   
