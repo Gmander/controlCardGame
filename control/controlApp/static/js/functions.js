@@ -47,42 +47,33 @@ function s2o(cardString){
   return new classActual()
 }
 
-function handGen(turn_var){
-  let array = []
-  for(let x of PlayedArray){
-    if(x.owner === turn_var ){
-      array.push(x.name)
-    }
 
 
-  }
-  return array
-
-}
-
-function boardGen(){
-  for(let x of PlayedArray){
-      if(x.inPlay === 1){
-        BoardDisplay(x.name, x.owner)
-      }
 
 
-  }
-  /// going with two variables
+// function boardGen(){
+//   for(let x of PlayedArray){
+//       if(x.inPlay === 1){
+//         BoardDisplay(x.name, x.owner)
+//       }
 
-}
+//   }
+//   /// going with two variables
+
+// }
 
 function discardGen(){
-    let array = []
   for(let x of PlayedArray){
     if(x.discarded === 1 ){
-      array.push(x.name)
+      console.log("i have a discard card to create")
+      showDiscard(x.name)
     }
 
 
   }
-  return array
 }
+
+
 //Todo aidan
 var varNum = 1
 function counterfuns() {
@@ -112,39 +103,77 @@ function CreateCard(name, owner) {
   newUl.setAttribute("onmouseover","createFocusedCard(this.id)");
   newUl.setAttribute("onclick","placeCardOnBoard(this.id)");
   newUl.setAttribute("onmouseout","removeFocusedCard()");
-  console.log("another one" + name)   
+  console.log("card in hand is" + name)   
   return newUl
 }
 
-var varNumz = 1
+var varNumz = -1
 function counterfunz() {
-  console.log(varNum)
+
     varNumz++
     console.log(varNumz)}
+var otherCounter = -1
+    function counterfuntz() {
+    
+      otherCounter++
+}
 function CreateCardBoard(name, owner) {
-  counterfunz()
-  // creating id and li and adding class
-  let newCardDiv = document.getElementById("createNewHandHere")
-  let newUl = document.createElement("li")
-  //determine cards remaining
-  let liCardsInDeck = document.getElementsByTagName("ul")[0].getElementsByTagName('li');
-  // console.log(liCardsInDeck)
-  // cardsRemaining = (liCardsInDeck.length)
-
-
-  //sets id of UL to newCardInHand, to be called for later use.
-  newUl.setAttribute("id", "newCardInHand" + varNum)
   
-  newCardDiv.appendChild(newUl)
-  newUl.classList.add("card");
-  newUl.classList.add("rank-k");
-  newUl.classList.add(name);
-  newUl.classList.add(owner);
-  newUl.setAttribute("onmouseover","createFocusedCard(this.id)");
-  newUl.setAttribute("onclick","placeCardOnBoard(this.id)");
-  newUl.setAttribute("onmouseout","removeFocusedCard()");
-  console.log(name)   
-  return newUl
+  //player0's board creation
+  if(owner == 0){
+    console.log(name)
+    counterfunz()
+    
+    let newUlonBoardz = document.createElement("li")
+    let newPlaceThing = document.getElementById("player0Board")
+    // let newPlaceThing = document.getElementById("player" + turnCount + "Board")
+    console.log(newPlaceThing)
+    let oldPlacez = newPlaceThing.getElementsByTagName("li")[varNumz]
+    console.log(oldPlacez + "is on the board")
+
+    newUlonBoardz.classList.add("card");
+    newUlonBoardz.classList.add("rank-k");
+    
+    newUlonBoardz.classList.add(name);
+    newUlonBoardz.classList.add(owner);
+    newUlonBoardz.setAttribute("onmouseover","createFocusedCard(this.id)");
+    newUlonBoardz.setAttribute("onmouseout","removeFocusedCard()");
+    newUlonBoardz.classList.add("cardSpace" + varNumz)
+    newUlonBoardz.setAttribute("id", "newCardInHandonBoard" + varNumz)
+    newUlonBoardz.setAttribute("onclick", "returnBoardCardOwner(this.id)")
+
+    oldPlacez.replaceWith(newUlonBoardz)
+    
+    removeFocusedCard()
+  }
+  //player1's board creation
+  else if (owner == 1){
+    counterfuntz()
+  console.log(name)
+    
+  let newUlonBoardz = document.createElement("li")
+  // let newPlace = document.getElementById("p0BoardSlotOne")
+  let newPlaceThing = document.getElementById("player1Board")
+  // let newPlaceThing = document.getElementById("player" + turnCount + "Board")
+  console.log(newPlaceThing)
+  let oldPlacez = newPlaceThing.getElementsByTagName("li")[otherCounter]
+  console.log(oldPlacez + "is on the board")
+
+  newUlonBoardz.classList.add("card");
+  newUlonBoardz.classList.add("rank-k");
+  
+  newUlonBoardz.classList.add(name);
+  newUlonBoardz.classList.add(owner);
+  newUlonBoardz.setAttribute("onmouseover","createFocusedCard(this.id)");
+  newUlonBoardz.setAttribute("onmouseout","removeFocusedCard()");
+  newUlonBoardz.classList.add("cardSpace" + otherCounter)
+  newUlonBoardz.setAttribute("id", "newCardInHandonBoard" + otherCounter)
+  newUlonBoardz.setAttribute("onclick", "returnBoardCardOwner(this.id)")
+
+  oldPlacez.replaceWith(newUlonBoardz)
+  
+  removeFocusedCard()
+  }
 }
 
 function getOwner(clicked_id){
@@ -156,30 +185,26 @@ function getOwner(clicked_id){
 }
 
 function BoardDisplay(name,owner){
-  for( let x of PlayedArray){
-    if(x.inPlay === 1){
       switch(owner){
         case 0:
           //place a card of type name in owners row
-          CreateCard(name, owner)
+          CreateCardBoard(name, owner)
     
     
           break;
         case 1:
           //place a card of type name in owners row
-          CreateCard(name, owner)
+          CreateCardBoard(name, owner)
           break;
         case 2:
           //place a card of type name in owners row
-          CreateCard(name, owner)
+          CreateCardBoard(name, owner)
           break;
         case 3:
           //place a card of type name in owners row
-          CreateCard(name, owner)
+          CreateCardBoard(name, owner)
           break;
       }
-    }
-  }
   //this function posses's card type in its scope.
 
 
@@ -187,7 +212,8 @@ function BoardDisplay(name,owner){
 
 function createHand(turn_var){
   let array = handGen(turn_var)
-  for(let x in array){
+  array.forEach(x => console.log("createHand array values are: "+ x))
+  for(let x of array){
     CreateCard(x, turn_var);
   }
   
@@ -197,31 +223,14 @@ function createHand(turn_var){
 
 function populateBoard() {
   for(let x of PlayedArray) {
+    if(x.inPlay === 1){
     BoardDisplay(x.name, x.owner)
-    
+    }
   }
 }
 
 //todo cant discard cards not owned by player
-function discardCard(clicked_id){
-   let thisId = document.getElementById(clicked_id)
-    let cardClassess = thisId.className
-    let cardClassezz = cardClassess.split(" ")
-    let objectLiteral = s2o(cardClassezz[2])
-    for( let x of PlayedArray){
-      if((objectLiteral.name === x.name) &&(objectLiteral.owner)=== turnCount  ){
-        if(x.discarded === 0){
-          x.discarded = 1;
-          x.inPlay = 0;
-          x.owner = -1;
-          return;
 
-        }
-      }
-
-    }
-
-}
 
 function getOwner(on_click){
   let thisId = document.getElementById(clicked_id)

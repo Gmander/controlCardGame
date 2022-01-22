@@ -64,6 +64,15 @@ function cardtoHandReal(x) {
     return drawnCard.name
 }
 
+function swapBoardId() {
+    let b0 = document.getElementById("player0Board")
+    let b1 = document.getElementById("player1Board")
+    b0.setAttribute("id", "temp")
+    b1.setAttribute("id", "player0Board")
+    b0.setAttribute("id", "player1Board")
+
+}
+
 
 function cardtoHandFake(x) {
     //Determining the card to pull from deck.
@@ -83,7 +92,7 @@ function cardtoHandFake(x) {
     newUl.classList.add("rank-k");
     
     newUl.classList.add(drawnCard.name);
-    newUl.classList.add(turnCount);
+    newUl.classList.add(1);
     newUl.setAttribute("onmouseover","createFocusedCard(this.id)");
     newUl.setAttribute("onclick","placeCardOnBoard(this.id)");
     newUl.setAttribute("onmouseout","removeFocusedCard()");
@@ -93,19 +102,20 @@ function cardtoHandFake(x) {
 }
 
 
- let counterrr = 0
+ var counterrr = 0
 function placeCardOnBoard(clicked_id) {
     console.log(counterrr)
+    onPlay(clicked_id)
     let thisId = document.getElementById(clicked_id)
     console.log(clicked_id)
     let clone = thisId.cloneNode(true)
     thisId.remove()
     // let newPlace = document.getElementById("p0BoardSlotOne")
-    let newPlaceThing = document.getElementById("player0Board")
-    console.log(newPlaceThing)
+    let newPlaceThing = document.getElementById("player" + turnCount + "Board")
+
     let newPlace = newPlaceThing.firstChild
     let oldPlace = newPlaceThing.getElementsByTagName("li")[counterrr]
-    console.log(oldPlace)
+
 
     clone.classList.add("cardSpace" + counterrr)
     clone.setAttribute("id", "newCardInHandonBoard" + counterrr)
@@ -169,34 +179,7 @@ function delay(time) {
     
 }
 
-async function start() {
-    let tempBut = document.getElementById("startButton")
-    tempBut.remove()
-    delay(1000).then(createDeckHere)
-    await delay(5000);
-    cardtoHandReal(turnCount)
-    await delay(100);
-    cardtoHandReal(turnCount)
-    await delay(100);
-    cardtoHandReal(turnCount)
-    await delay(100);
-    cardtoHandReal(turnCount)
-    await delay(100);
-    cardtoHandReal(turnCount)
 
-    // for second player
-
-    // cardtoHandFake(turnCount + 1)
-    // await delay(100);
-    // cardtoHandFake(turnCount + 1)
-    // await delay(100);
-    // cardtoHandFake(turnCount + 1)
-    // await delay(100);
-    // cardtoHandFake(turnCount + 1)
-    // await delay(100);
-    // cardtoHandFake(turnCount + 1)
-
-}
 
 function addPaddingReal(clicked_id) {
     console.log(clicked_id)
@@ -244,29 +227,51 @@ function togglePlayDiscard() {
     for(let ce=1; ce<whatChange; ce++) {
         let whatChanges = document.getElementById("createNewHandHere").childNodes[ce]
         console.log(whatChanges)
-        whatChanges.setAttribute("onclick", "placeCardOnBoardPlayer1(this.id)")
-        // TODO change back to placeCardOnBoard
+        whatChanges.setAttribute("onclick", "placeCardOnBoard(this.id)")
     }
 }
 
 countr = 0
 function discard(clicked_id) {
+    discardCard(clicked_id)
     let thisId = document.getElementById(clicked_id)
     let discardSpot = document.getElementById("discardDeckHere")
     console.log(thisId)
     let clone = thisId.cloneNode(true)
     clone.setAttribute("id", "newCardInDiscardonBoard" + countr)
+    clone.setAttribute("style", "z-index: 100;");
     discardSpot.appendChild(clone)
     thisId.remove()
     removeFocusedCard()
-    if(countr == 6){
-        // its 6 here because I only made 6 Id classes. Honestly it should be made dynamically. idc TODO
-        countr = 0
-    }
+    
+    
     return countr++
 
 
     }
+
+function showDiscard(name) {
+    let newUl = document.createElement("li")
+    newUl.classList.add("card");
+    newUl.classList.add("rank-k");
+    
+    newUl.classList.add(name);
+
+    newUl.setAttribute("onmouseover","createFocusedCard(this.id)");
+    // newUl.setAttribute("onclick","placeCardOnBoard(this.id)");
+    newUl.setAttribute("onmouseout","removeFocusedCard()");
+
+    let discardSpot = document.getElementById("discardDeckHere")
+
+    let clone = newUl.cloneNode(true)
+    clone.setAttribute("id", "newCardInDiscardonBoard" + countr)
+    clone.setAttribute("style", "z-index: 100;");
+    discardSpot.appendChild(clone)
+    removeFocusedCard()
+    
+    return countr++
+
+}
 
 function returnBoardCardOwner(clicked_id) {
     let thisElement = document.getElementById(clicked_id)

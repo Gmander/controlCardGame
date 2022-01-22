@@ -1,5 +1,5 @@
 //This is the creation of the deck and counters
-var CardArray = [singularity, rift,timeStop,futureShift,exoticMatter, forceField, deflector, reactor,wormhole, nova,darkEnergy, antimatter]
+var CardArray = [singularity, rift,timeStop,futureShift,exoticMatter, forceField, deflector, reactor,wormhole, nova,darkEnergy, antimatter, singularity, rift,timeStop,futureShift,exoticMatter, forceField, deflector, reactor,wormhole, nova,darkEnergy, antimatter, singularity, rift,timeStop,futureShift,exoticMatter, forceField, deflector, reactor,wormhole, nova,darkEnergy, antimatter, singularity, rift,timeStop,futureShift,exoticMatter, forceField, deflector, reactor,wormhole, nova,darkEnergy, antimatter]
 var ObjectDict = {"singularity":singularity,"rift":rift,"timeStop":timeStop,"futureShift":futureShift, "exoticMatter":exoticMatter, "forceField":forceField, "deflector":deflector, "reactor":reactor, "wormhole":wormhole, "nova":nova,"darkEnergy":darkEnergy,"antimatter":antimatter}
 var ObjectArray = []
 var PlayedArray = []
@@ -246,52 +246,53 @@ function createFocusedCard(clicked_id) {
 }
 
 function onPlay(clicked_id){
+    console.log(clicked_id)
     let thisId = document.getElementById(clicked_id)
     let cardClassess = thisId.className
     let cardClassezz = cardClassess.split(" ")
     console.log(cardClassezz[2])
     let thisIsThisCard = cardClassezz[2]
-    let objectLiteral = s2o(thisIsThisCard)
-    let selectedObject = getPlayedArray(objectLiteral, "inPlay")
+    let objectLiteral = s4o(thisIsThisCard)//TODO this fucks backend
+    let selectedObject = getPlayedArray(objectLiteral)
     //todo add line disallowing playing of opponents board
     selectedObject.inPlay = 1; // TODO for this to work on rift play, all cards on board must be onPlay(), needs to be !adjusted so u cant "play" someone elses cards on board.
-    if((objectLiteral.name === "rift") || (riftPoints === 1)){
-        //do rift action
-        if(riftPoints === 0){
-            riftPoints = 1
-            return; // put card in center
-        }
-        else{
-            if(checkDeflector(selectedObject.owner)=== 1){
-                alert("cannot use this on deflector")
-                return;
-            }
-            discardCard(selectedObject)
-            //TODO card must be deleted in html
-            riftPoints = 0;
-            nextTurn()
-            return;
+    // if((objectLiteral.name === "rift") || (riftPoints === 1)){
+    //     //do rift action
+    //     if(riftPoints === 0){
+    //         riftPoints = 1
+    //         return; // put card in center
+    //     }
+    //     else{
+    //         if(checkDeflector(selectedObject.owner)=== 1){
+    //             alert("cannot use this on deflector")
+    //             return;
+    //         }
+    //         discardCard(selectedObject)
+    //         //TODO card must be deleted in html
+    //         riftPoints = 0;
+    //         nextTurn()
+    //         return;
 
-        }
+    //     }
 
-    }
-    if(selectedObject.name === "exoticMatter" || (exoticPoints===1)){
-        if(exoticPoints === 0){
-            exoticPoints = 1
-            return
-        }
-        else{
-            if(selectedObject.points>3 ){
-                alert("choose a card less than or equal to 3 points")//todo put the card in hand again
-                selectedObject.inPlay = 0;
-                return
-            }
-            exoticPoints = 0;
-        }
-        // allow onPlay of 3 or lower value card then end turn, if three or lower card not picked alert error
+    // }
+    // if(selectedObject.name === "exoticMatter" || (exoticPoints===1)){
+    //     if(exoticPoints === 0){
+    //         exoticPoints = 1
+    //         return
+    //     }
+    //     else{
+    //         if(selectedObject.points>3 ){
+    //             alert("choose a card less than or equal to 3 points")//todo put the card in hand again
+    //             selectedObject.inPlay = 0;
+    //             return
+    //         }
+    //         exoticPoints = 0;
+    //     }
+    //     // allow onPlay of 3 or lower value card then end turn, if three or lower card not picked alert error
 
-    }
-    nextTurn()
+    // }
+    // nextTurn()
 }
 
 function onDiscard(clicked_id){
@@ -375,8 +376,12 @@ function onDiffuse(clicked_id){
 
 function removeFocusedCard() {
     let removeThis = document.getElementById("focusedCard")
-
+    if(removeThis != null){
     removeThis.remove()
+    }
+    else{
+        return
+    }
 
 }
 
@@ -415,6 +420,9 @@ function testt() {
 }
 
 function nextTurn(){
+    swapBoardId()
+    counterrr = 0
+    otherCounter = -1
    if(turnCount === (maxTurnCount-1)) {
        turnCount = 0;
    }
@@ -424,11 +432,13 @@ function nextTurn(){
    console.log("this is turnCount= " + turnCount)
    ///aidans front end board wiping
    clearBoard()
-   //populateBoard()
+   discardGen()
    createHand(turnCount)
+   populateBoard()
    varNum = 0;
-
+   varNumz = -1
     alert("it is now the next players turn")
+    console.log("this is the turn count: "+ turnCount)
     cardtoHandReal(turnCount)
 
 
@@ -474,13 +484,13 @@ function handCount(owner){
  //    return choice;
  //  }
 
-function getPlayedArray(objectLiteral, property){
-      for( let x of PlayedArray){
-      if((objectLiteral.name === x.name) &&(objectLiteral.owner)=== turnCount  ){
-        if(x[property] === 0){
+function getPlayedArray(objectLiteral){
+      for(let x of PlayedArray){
+      if((objectLiteral.name === x.name) && (objectLiteral.owner) === turnCount){
           return x
+          
 
-        }
+        
       }
 
     }
@@ -514,12 +524,85 @@ function checkDeflector(owner){
 }
 
 
+async function start() {
+    let tempBut = document.getElementById("startButton")
+    tempBut.remove()
+    delay(1000).then(createDeckHere)
+
+        await delay(5500);
+        cardtoHandReal(turnCount)
+        await delay(100);
+        cardtoHandReal(turnCount)
+        await delay(100);
+        cardtoHandReal(turnCount)
+        await delay(100);
+        cardtoHandReal(turnCount)
+        await delay(100);
+        cardtoHandReal(turnCount)
+
+        //second player draw
+
+        cardtoHandFake(turnCount + 1)
+
+        cardtoHandFake(turnCount + 1)
+
+        cardtoHandFake(turnCount + 1)
+
+        cardtoHandFake(turnCount + 1)
+
+        cardtoHandFake(turnCount + 1)
 
 
+}
 
 
+function handGen(turn_var){
+  let array = []
+  console.log("handGen was called")
+  for(let x of PlayedArray){
+    console.log("the owner of every card is: "+x.owner)
+    if((x.owner === turn_var) && (x.inPlay != 1)){
+      console.log("something has been pushed into array")
+      array.push(x.name)
+    }
 
 
+  }
+    array.forEach(x => console.log(x))
+  return array
+
+}
 
 
+function s4o(cardString){
+    let classActual = ObjectDict[cardString]
+    let x = new classActual()
+    x.owner = turnCount
+    return x
+  }
 
+  function discardCard(clicked_id){
+    let thisId = document.getElementById(clicked_id)
+    console.log(clicked_id)
+     let cardClassess = thisId.className
+     let cardClassezz = cardClassess.split(" ")
+     let objectLiteral = s4o(cardClassezz[2])
+     objectLiteral.owner = cardClassezz[3]
+     console.log("this is the object owner: "+objectLiteral.owner)
+     for( let x of PlayedArray){
+       if((objectLiteral.name === x.name) &&(objectLiteral.owner=== cardClassezz[3] ) ){
+         console.log("i got here 2")
+         if(x.discarded === 0){
+           console.log("i got here")
+           x.discarded = 1;
+           console.log(x.discarded)
+           x.inPlay = 0;
+           x.owner = -1;
+           return;
+ 
+         }
+       }
+ 
+     }
+ 
+ }
