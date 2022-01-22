@@ -112,7 +112,7 @@ function CreateCard(name, owner) {
   newUl.setAttribute("onmouseover","createFocusedCard(this.id)");
   newUl.setAttribute("onclick","placeCardOnBoard(this.id)");
   newUl.setAttribute("onmouseout","removeFocusedCard()");
-  console.log(name)   
+  console.log("another one" + name)   
   return newUl
 }
 
@@ -188,7 +188,7 @@ function BoardDisplay(name,owner){
 function createHand(turn_var){
   let array = handGen(turn_var)
   for(let x in array){
-    CreateCard(x.name, turn_var);
+    CreateCard(x, turn_var);
   }
   
 

@@ -63,6 +63,36 @@ function cardtoHandReal(x) {
     console.log(drawnCard.name)   
     return drawnCard.name
 }
+
+
+function cardtoHandFake(x) {
+    //Determining the card to pull from deck.
+    let drawnCard = ObjectArray.pop()
+    deckCounter = ObjectArray.length
+    drawnCard.owner = x;
+    PlayedArray.push(drawnCard)
+    realRemoveCardFromDeck()
+    // creating id and li and adding class
+    let newCardDiv = document.getElementById("createNewHandHere")
+    let newUl = document.createElement("li")
+    counterfun()
+    //sets id of UL to newCardInHand, to be called for later use.
+    newUl.setAttribute("id", "newCardInHand" + varNums)
+    // newCardDiv.appendChild(newUl)
+    newUl.classList.add("card");
+    newUl.classList.add("rank-k");
+    
+    newUl.classList.add(drawnCard.name);
+    newUl.classList.add(turnCount);
+    newUl.setAttribute("onmouseover","createFocusedCard(this.id)");
+    newUl.setAttribute("onclick","placeCardOnBoard(this.id)");
+    newUl.setAttribute("onmouseout","removeFocusedCard()");
+    
+    console.log("this is " + drawnCard.name)   
+    return drawnCard.name
+}
+
+
  let counterrr = 0
 function placeCardOnBoard(clicked_id) {
     console.log(counterrr)
@@ -124,7 +154,7 @@ function delay(time) {
   }
 
   async function createDeckHere() {
-    for(let count=0; count<12; count++){
+    for(let count=0; count<48; count++){
         await delay(100);
     
         let wheretis = document.getElementById("createDeckHere")
@@ -143,16 +173,28 @@ async function start() {
     let tempBut = document.getElementById("startButton")
     tempBut.remove()
     delay(1000).then(createDeckHere)
-    await delay(2400);
-    cardtoHandReal()
+    await delay(5000);
+    cardtoHandReal(turnCount)
     await delay(100);
-    cardtoHandReal()
+    cardtoHandReal(turnCount)
     await delay(100);
-    cardtoHandReal()
+    cardtoHandReal(turnCount)
     await delay(100);
-    cardtoHandReal()
+    cardtoHandReal(turnCount)
     await delay(100);
-    cardtoHandReal()
+    cardtoHandReal(turnCount)
+
+    // for second player
+
+    // cardtoHandFake(turnCount + 1)
+    // await delay(100);
+    // cardtoHandFake(turnCount + 1)
+    // await delay(100);
+    // cardtoHandFake(turnCount + 1)
+    // await delay(100);
+    // cardtoHandFake(turnCount + 1)
+    // await delay(100);
+    // cardtoHandFake(turnCount + 1)
 
 }
 

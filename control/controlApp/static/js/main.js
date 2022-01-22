@@ -52,6 +52,8 @@ function addCardToHand() {
 
 }
 
+
+
 function createCardInHand() {
     // creating id and li and adding class
     let newCardDiv = document.getElementById("createNewCardHere")
@@ -422,7 +424,7 @@ function nextTurn(){
    console.log("this is turnCount= " + turnCount)
    ///aidans front end board wiping
    clearBoard()
-   populateBoard()
+   //populateBoard()
    createHand(turnCount)
    varNum = 0;
 
@@ -510,6 +512,8 @@ function checkDeflector(owner){
     return 0;
 
 }
+
+
 
 
 
