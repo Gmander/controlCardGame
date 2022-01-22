@@ -47,18 +47,7 @@ function s2o(cardString){
   return new classActual()
 }
 
-function handGen(turn_var){
-  let array = []
-  for(let x of PlayedArray){
-    if(x.owner === turn_var ){
-      array.push(x.name)
-    }
 
-
-  }
-  return array
-
-}
 
 function boardGen(){
   for(let x of PlayedArray){
@@ -187,8 +176,9 @@ function BoardDisplay(name,owner){
 
 function createHand(turn_var){
   let array = handGen(turn_var)
-  for(let x in array){
-    CreateCard(x.name, turn_var);
+  array.forEach(x => console.log("createHand array values are: "+ x))
+  for(let x of array){
+    CreateCard(x, turn_var);
   }
   
 

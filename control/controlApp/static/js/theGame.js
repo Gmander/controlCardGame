@@ -139,22 +139,7 @@ function delay(time) {
     
 }
 
-async function start() {
-    let tempBut = document.getElementById("startButton")
-    tempBut.remove()
-    delay(1000).then(createDeckHere)
-    await delay(2400);
-    cardtoHandReal()
-    await delay(100);
-    cardtoHandReal()
-    await delay(100);
-    cardtoHandReal()
-    await delay(100);
-    cardtoHandReal()
-    await delay(100);
-    cardtoHandReal()
 
-}
 
 function addPaddingReal(clicked_id) {
     console.log(clicked_id)

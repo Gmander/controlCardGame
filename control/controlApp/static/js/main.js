@@ -1,5 +1,5 @@
 //This is the creation of the deck and counters
-var CardArray = [singularity, rift,timeStop,futureShift,exoticMatter, forceField, deflector, reactor,wormhole, nova,darkEnergy, antimatter]
+var CardArray = [singularity, rift,timeStop,futureShift,exoticMatter, forceField, deflector, reactor,wormhole, nova,darkEnergy, antimatter, singularity, rift,timeStop,futureShift,exoticMatter, forceField, deflector, reactor,wormhole, nova,darkEnergy, antimatter, singularity, rift,timeStop,futureShift,exoticMatter, forceField, deflector, reactor,wormhole, nova,darkEnergy, antimatter, singularity, rift,timeStop,futureShift,exoticMatter, forceField, deflector, reactor,wormhole, nova,darkEnergy, antimatter]
 var ObjectDict = {"singularity":singularity,"rift":rift,"timeStop":timeStop,"futureShift":futureShift, "exoticMatter":exoticMatter, "forceField":forceField, "deflector":deflector, "reactor":reactor, "wormhole":wormhole, "nova":nova,"darkEnergy":darkEnergy,"antimatter":antimatter}
 var ObjectArray = []
 var PlayedArray = []
@@ -422,11 +422,12 @@ function nextTurn(){
    console.log("this is turnCount= " + turnCount)
    ///aidans front end board wiping
    clearBoard()
-   populateBoard()
+   //populateBoard()
    createHand(turnCount)
    varNum = 0;
 
     alert("it is now the next players turn")
+    console.log("this is the turn count: "+ turnCount)
     cardtoHandReal(turnCount)
 
 
@@ -512,10 +513,42 @@ function checkDeflector(owner){
 }
 
 
+async function start() {
+    let tempBut = document.getElementById("startButton")
+    tempBut.remove()
+    delay(1000).then(createDeckHere)
+
+        await delay(2400);
+        cardtoHandReal(turnCount)
+        await delay(100);
+        cardtoHandReal(turnCount)
+        await delay(100);
+        cardtoHandReal(turnCount)
+        await delay(100);
+        cardtoHandReal(turnCount)
+        await delay(100);
+        cardtoHandReal(turnCount)
 
 
+}
 
 
+function handGen(turn_var){
+  let array = []
+  console.log("handGen was called")
+  for(let x of PlayedArray){
+    console.log("the owner of every card is: "+x.owner)
+    if(x.owner === turn_var ){
+      console.log("something has been pushed into array")
+      array.push(x.name)
+    }
+
+
+  }
+    array.forEach(x => console.log(x))
+  return array
+
+}
 
 
 
