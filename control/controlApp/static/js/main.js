@@ -419,6 +419,7 @@ function nextTurn(){
    else{
        turnCount += 1
    }
+   console.log("this is turnCount= " + turnCount)
    ///aidans front end board wiping
    clearBoard()
    populateBoard()
@@ -426,7 +427,7 @@ function nextTurn(){
    varNum = 0;
 
     alert("it is now the next players turn")
-    drawCard(turnCount)
+    cardtoHandReal(turnCount)
 
 
 }

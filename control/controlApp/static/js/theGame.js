@@ -339,13 +339,13 @@ function clearBoard() {
     }
     
     //Draw deck
-    let drawDeck = document.getElementById("createDeckHere")
-    let nCardsinDeck = drawDeck.childElementCount
-    console.log(nCardsinDeck + "num cards in deck")
-    //TODO pass nCardsinDeck to Hussain
-    while (drawDeck.firstChild) {
-        drawDeck.removeChild(drawDeck.firstChild);
-    }
+    // let drawDeck = document.getElementById("createDeckHere")
+    // let nCardsinDeck = drawDeck.childElementCount
+    // console.log(nCardsinDeck + "num cards in deck")
+    // //TODO pass nCardsinDeck to Hussain
+    // while (drawDeck.firstChild) {
+    //     drawDeck.removeChild(drawDeck.firstChild);
+    // }
 
     //Discard pile
     let discardPile = document.getElementById("discardDeckHere")
